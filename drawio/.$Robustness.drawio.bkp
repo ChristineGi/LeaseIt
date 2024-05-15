@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2024-05-15T15:36:14.680Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.2.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="B-1qiwIW4SeS-ODTFeQT" version="24.2.5" type="device" pages="9">
+<mxfile host="Electron" modified="2024-05-15T15:31:57.636Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.2.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="Ud_tf9LNGYZvPq8fv32v" version="24.2.5" type="device" pages="10">
   <diagram id="2FH4rY_c5h08tlJA4a9-" name="Use Case 1: Robustness Car Leasing">
-    <mxGraphModel dx="3114" dy="404" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3739" dy="569" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -421,8 +421,67 @@
       </root>
     </mxGraphModel>
   </diagram>
+  <diagram id="Z4Uz1m2n9qTp4Z9h4wxU" name="Sequence Use Case 1">
+    <mxGraphModel dx="3123" dy="2131" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="4EnQNEhmw3cGKxne7eiU-4" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
+          <mxGeometry x="-153" y="-437" width="10" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="4EnQNEhmw3cGKxne7eiU-5" value="callback" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=1;entryY=0;entryDx=0;entryDy=5;" parent="1" target="4EnQNEhmw3cGKxne7eiU-4" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-73" y="-432" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4EnQNEhmw3cGKxne7eiU-6" value="return" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=-5;" parent="1" source="4EnQNEhmw3cGKxne7eiU-4" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-73" y="-362" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5wID6aknU6Bdf7i--1Tg-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;curved=0;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-474.2692307692307" y="-50.00000000000023" as="sourcePoint" />
+            <mxPoint x="-298.5" y="-49.46153846153834" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5wID6aknU6Bdf7i--1Tg-2" value="Text" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="5wID6aknU6Bdf7i--1Tg-1" vertex="1" connectable="0">
+          <mxGeometry x="0.0372" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4EnQNEhmw3cGKxne7eiU-7" value="" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};participant=umlActor;" parent="1" vertex="1">
+          <mxGeometry x="-484" y="-164" width="20" height="874" as="geometry" />
+        </mxCell>
+        <mxCell id="4EnQNEhmw3cGKxne7eiU-8" value="UI: Leasing Vehicle" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
+          <mxGeometry x="-353" y="-170" width="110" height="887" as="geometry" />
+        </mxCell>
+        <mxCell id="4EnQNEhmw3cGKxne7eiU-9" value="Vehicle" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
+          <mxGeometry x="-153" y="-170.5" width="110" height="887" as="geometry" />
+        </mxCell>
+        <mxCell id="4EnQNEhmw3cGKxne7eiU-10" value="Lease Contract" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
+          <mxGeometry x="192" y="-170.5" width="110" height="887" as="geometry" />
+        </mxCell>
+        <mxCell id="4EnQNEhmw3cGKxne7eiU-11" value="Payment&lt;div&gt;Gateway&lt;/div&gt;" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
+          <mxGeometry x="379" y="-170" width="110" height="887" as="geometry" />
+        </mxCell>
+        <mxCell id="4EnQNEhmw3cGKxne7eiU-12" value="Tax Gateway" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
+          <mxGeometry x="548" y="-170.5" width="110" height="887" as="geometry" />
+        </mxCell>
+        <mxCell id="4EnQNEhmw3cGKxne7eiU-13" value="Message" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
+          <mxGeometry x="735" y="-170" width="110" height="887" as="geometry" />
+        </mxCell>
+        <mxCell id="4EnQNEhmw3cGKxne7eiU-14" value="Message" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
+          <mxGeometry x="902" y="-170" width="110" height="887" as="geometry" />
+        </mxCell>
+        <mxCell id="8xRrEGzCg8YS82CEYbcD-1" value="Dealership" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
+          <mxGeometry x="18" y="-173" width="110" height="887" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
   <diagram id="jMX1yN2rx8oESA_uBrQv" name="Use Case 2 Robustness">
-    <mxGraphModel dx="3456" dy="963" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="4517" dy="1442" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -926,7 +985,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="ptW6DCi0XMuGJ7nc4o2p" name="Use Case 3 Robustness">
-    <mxGraphModel dx="3456" dy="1363" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="6314" dy="2871" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1406,7 +1465,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="jz5Kp38GvxnJ8Zn_VHRG" name="Use Case 4 Robustness">
-    <mxGraphModel dx="3456" dy="963" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="4745" dy="1573" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1736,7 +1795,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="j6Q2CxyhJRdCuB0KXI4s" name="Use Case 5 Robustness">
-    <mxGraphModel dx="3456" dy="1363" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="4517" dy="1842" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -2155,7 +2214,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="JsV3n2Bty8Ifrz81BCpw" name="Use Case 6 Robustness">
-    <mxGraphModel dx="3456" dy="1363" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3061" dy="1094" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -2191,7 +2250,7 @@
         <mxCell id="oTdvWXJpgPU9qPoQkkwr-3" value="&lt;span style=&quot;font-size: 11px;&quot;&gt;Eμφανίζει&lt;/span&gt;" style="ellipse;shape=umlControl;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-1041" y="434.5" width="80" height="89" as="geometry" />
         </mxCell>
-        <mxCell id="Xb-ANouiG0gepN59m7gK-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="oTdvWXJpgPU9qPoQkkwr-5" target="Xb-ANouiG0gepN59m7gK-3" edge="1">
+        <mxCell id="Xb-ANouiG0gepN59m7gK-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="oTdvWXJpgPU9qPoQkkwr-5" target="Xb-ANouiG0gepN59m7gK-3">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="oTdvWXJpgPU9qPoQkkwr-5" value="Οθόνη:&lt;div&gt;Technical&lt;/div&gt;&lt;div&gt;Support&lt;/div&gt;" style="shape=umlBoundary;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -2438,30 +2497,30 @@
         <mxCell id="JFVtn4pu9B5WgB8Mwdh2-6" value="&lt;p style=&quot;font-size: 19px;&quot; class=&quot;MsoNormal&quot;&gt;&lt;b&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;&quot;&gt;Use Case 6: &lt;/span&gt;&lt;/b&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;&quot;&gt;Technical Support&lt;/span&gt;&lt;/p&gt;" style="text;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-942.5" y="44" width="378" height="89" as="geometry" />
         </mxCell>
-        <mxCell id="Xb-ANouiG0gepN59m7gK-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.995;entryY=0.558;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="6Hk6i3MbIOpTCaCwpjQD-5" target="6Hk6i3MbIOpTCaCwpjQD-7" edge="1">
+        <mxCell id="Xb-ANouiG0gepN59m7gK-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.995;entryY=0.558;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="6Hk6i3MbIOpTCaCwpjQD-5" target="6Hk6i3MbIOpTCaCwpjQD-7">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="-91" y="829" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Xb-ANouiG0gepN59m7gK-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="Xb-ANouiG0gepN59m7gK-3" target="Xb-ANouiG0gepN59m7gK-4" edge="1">
+        <mxCell id="Xb-ANouiG0gepN59m7gK-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Xb-ANouiG0gepN59m7gK-3" target="Xb-ANouiG0gepN59m7gK-4">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Xb-ANouiG0gepN59m7gK-3" value="&lt;span style=&quot;font-size: 11px;&quot;&gt;Ενεργοποίηση&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;Chatbot&lt;/span&gt;&lt;/div&gt;" style="ellipse;shape=umlControl;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="Xb-ANouiG0gepN59m7gK-3" value="&lt;span style=&quot;font-size: 11px;&quot;&gt;Ενεργοποίηση&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;Chatbot&lt;/span&gt;&lt;/div&gt;" style="ellipse;shape=umlControl;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="-716" y="435" width="80" height="89" as="geometry" />
         </mxCell>
-        <mxCell id="Xb-ANouiG0gepN59m7gK-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="Xb-ANouiG0gepN59m7gK-4" target="6Hk6i3MbIOpTCaCwpjQD-23" edge="1">
+        <mxCell id="Xb-ANouiG0gepN59m7gK-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Xb-ANouiG0gepN59m7gK-4" target="6Hk6i3MbIOpTCaCwpjQD-23">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Xb-ANouiG0gepN59m7gK-4" value="&lt;span style=&quot;font-size: 11px;&quot;&gt;Δημιουργία&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;Chat Session&lt;/span&gt;&lt;/div&gt;" style="ellipse;shape=umlControl;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="Xb-ANouiG0gepN59m7gK-4" value="&lt;span style=&quot;font-size: 11px;&quot;&gt;Δημιουργία&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;Chat Session&lt;/span&gt;&lt;/div&gt;" style="ellipse;shape=umlControl;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="-576" y="435" width="80" height="89" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram id="3bDk-NWUWT1-fj1sKxw8" name="Use Case 7 Robustness">
-    <mxGraphModel dx="2656" dy="1363" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2261" dy="1094" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -2825,7 +2884,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="8DXONv_aatImSyZBruq7" name="Use Case 8 Robustness">
-    <mxGraphModel dx="2656" dy="963" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2716" dy="1046" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -3169,7 +3228,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="vPpRMLDTAB60RZrwPptp" name="Use Case 9 Robustness">
-    <mxGraphModel dx="2656" dy="963" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2832" dy="1068" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
