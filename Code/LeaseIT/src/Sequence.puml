@@ -1,0 +1,60 @@
+@startuml
+actor User
+participant "UI: Vehicle Leasing" as UIL
+participant Database
+participant Vehicle
+participant "Lease Contract" as LC
+participant "Payment Gateway" as PG
+participant "Tax Gateway" as TG
+participant Message
+participant Email
+
+User -> UIL : showLeasingVehicleScreen()
+UIL -> Database : getVehiclePreferences()
+Database --> UIL : return Vehicle Preferences
+User -> UIL : submitPreferences(preferences)
+UIL -> Database : searchVehicles(preferences)
+Database --> UIL : return Vehicles
+User -> UIL : selectVehicle(vehicleId)
+UIL -> Database : fetchVehicleDetails(vehicleId)
+Database -> Vehicle : loadVehicle(details)
+Vehicle --> UIL : return Vehicle Details
+UIL -> Vehicle : requestLeasingTerms(vehicleId)
+Vehicle -> LC : calculateLeasingTerms(vehicleDetails
+LC --> UIL : return Leasing Terms
+User -> UIL : confirmLeasingTerms(terms)
+UIL -> TG : checkCreditworthiness(userDetails, terms)
+
+alt
+  TG --> LC : return creditworthiness(Result: Approved)
+  LC -> Message : displayApprovalMessage(approvalMessage)
+
+else
+  TG --> LC : return creditworthiness(Result: Rejection)
+  LC -> Message : displayRejectionMessage(rejectionMessage)
+  Message --> UIL : return
+  User -> UIL : reviseLeasingApplication()
+end
+
+LC -> LC : finalizeLeaseContract()
+LC --> UIL : returnLeasingOverview(overview)
+
+alt Alternative Flow 2: User Aborts Leasing Process
+
+  User -> UIL : proceedToPayment()
+  UIL -> PG : computePayment(paymentDetails)
+  PG --> UIL : return paymentConfirmation(transaction)
+  UIL -> Message : displayMessage(successMessage)
+  Message --> UIL : return
+
+else
+  User -> UIL : abandonLeasingProcess()
+  UIL -> Database : saveSessionSettings()
+  Database --> Email : detectSessionEnd()
+  Email -> Email : sendEmail()
+  User -> Email : interacts
+  Email -> Database : retrieveSessionSettings()
+  Database --> UIL : showRetrievedSettings()
+end
+
+@enduml
