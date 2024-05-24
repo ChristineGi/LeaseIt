@@ -1,6 +1,5 @@
 import java.util.Scanner;
 import java.util.Set;
-import java.util.stream.Collectors;
 import java.util.List;
 
 public class Main {
@@ -16,6 +15,10 @@ public class Main {
         TaxGateway taxGateway = new TaxGateway();
         Message messageService = new Message();
         Email emailService = new Email();
+        GoogleMaps googleMaps = new GoogleMaps();
+        Dealership dealership = new Dealership();
+        Calendar calendar = new Calendar();
+        Wallet wallet = new Wallet();
 
         // Initialize UI
         VehicleLeasing vehicleLeasing = new VehicleLeasing(database, vehicle, leaseContract, taxGateway, messageService, paymentGateway, emailService);
@@ -37,15 +40,19 @@ public class Main {
             }
         }
 
+        VehiclePickup vehiclePickup = new VehiclePickup(database, leaseContract, googleMaps, dealership, calendar, wallet, emailService, userDetails);
+
         while (true) {
             try {
                 System.out.println("Home Screen");
                 System.out.println("1. Vehicle Leasing");
                 System.out.println("2. View Emails");
-                System.out.println("3. Exit");
+                System.out.println("3. View Leasing Subscriptions");
+                System.out.println("4. Vehicle Pickup");
+                System.out.println("5. Exit");
                 int choice = scanner.nextInt();
 
-                if (choice == 3) {
+                if (choice == 5) {
                     break;
                 }
 
@@ -99,15 +106,24 @@ public class Main {
                         for (int i = 0; i < emails.size(); i++) {
                             System.out.println((i + 1) + ". " + emails.get(i));
                         }
-                        System.out.println("Enter the email number to continue the leasing process or '0' to go back:");
-                        int emailChoice = scanner.nextInt();
-                        scanner.nextLine(); // Consume newline
-                        if (emailChoice > 0 && emailChoice <= emails.size()) {
-                            vehicleLeasing.continueLeasingProcess();
+                        System.out.println("Enter the email number to read, 'd' followed by the email number to delete, or '0' to go back:");
+                        String emailChoice = scanner.next();
+                        if (emailChoice.equals("0")) {
+                            continue;
+                        } else if (emailChoice.startsWith("d")) {
+                            int emailIndex = Integer.parseInt(emailChoice.substring(1)) - 1;
+                            emailService.deleteEmail(loggedInUsername, emailIndex);
+                        } else {
+                            int emailIndex = Integer.parseInt(emailChoice) - 1;
+                            System.out.println("Email: " + emails.get(emailIndex));
                         }
                     }
+                } else if (choice == 3) {
+                    vehicleLeasing.viewLeasingSubscriptions();
+                } else if (choice == 4) {
+                    vehiclePickup.showVehiclePickup();
                 } else {
-                    System.out.println("Invalid choice. Please select 1, 2, or 3.");
+                    System.out.println("Invalid choice. Please select 1, 2, 3, 4, or 5.");
                 }
             } catch (Exception e) {
                 System.out.println("Invalid input. Please enter a number.");

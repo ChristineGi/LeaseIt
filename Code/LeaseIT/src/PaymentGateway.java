@@ -5,13 +5,13 @@ public class PaymentGateway {
     public PaymentConfirmation computePayment(PaymentGateway.PaymentDetails details) {
         try {
             System.out.println("Processing payment...");
-            Thread.sleep(2000); // Simulate processing time
+            Thread.sleep(2000);
 
             // Generate a unique transaction ID
             String transactionId = UUID.randomUUID().toString();
 
             PaymentConfirmation confirmation = new PaymentConfirmation(transactionId);
-            Thread.sleep(2000); // Simulate processing time
+            Thread.sleep(2000);
             System.out.println("Payment successful! Transaction ID: " + confirmation.getTransactionId());
 
             return confirmation;

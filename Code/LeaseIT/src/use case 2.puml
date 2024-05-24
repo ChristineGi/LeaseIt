@@ -1,0 +1,40 @@
+@startuml
+actor User
+participant "Vehicle Pickup" as VP
+participant Database
+participant Calendar
+participant Dealership
+participant QR
+participant Wallet
+participant "Google Maps" as GM
+participant Email
+
+User -> VP : showVehiclePickup()
+VP -> Database : getPendingLeases()
+Database --> VP : returnPendingLeases(leasings)
+VP -> VP : promptForSync()
+User -> VP : Accept
+VP -> GM : syncLocation()
+GM --> VP : return
+VP -> Dealership : retrieveDealerships()
+Dealership --> VP : returnDealerships()
+User -> VP : Select Dealership
+VP -> Dealership : checkAvailability(dealershipID)
+Dealership --> VP : displayPickupTimes()
+User -> VP : selectPickupTime(time)
+VP -> Calendar : scheduleUserAppointment(time)
+Calendar --> VP : Success
+VP -> Dealership :scheduleDealershipAppointment(time)
+Dealership -> Email: sendEmail(details)
+Email --> VP : return
+VP -> QR : generateQRCode(qrCode)
+QR -> Wallet : importInWallet(qrCode)
+User -> Wallet : Scan QR Code
+Wallet -> QR : verifyQRCode(qrCode)
+QR --> VP: qrVerificationResendProofEmail()
+VP -> Email :sendProofEmail()
+Email --> VP : return
+VP -> Database : updateLeaseStatus("Active")
+Database --> VP : return
+
+@enduml

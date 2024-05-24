@@ -44,7 +44,7 @@ public class VehicleLeasing {
         }
         System.out.println("Available Vehicles:");
         for (Vehicle.VehicleDetails v : vehicles) {
-            System.out.println("ID: " + v.getVehicleId() + ", Type: " + v.getType() + ", Make: " + v.getMake() + ", Model: " + v.getModel());
+            System.out.println("ID: " + v.getVehicleId() + ", Type: " + v.getType() + ", Make: " + v.getMake() + ", Model: " + v.getModel() + ", Leased: " + (v.isLeased() ? "Yes" : "No"));
         }
         return true;
     }
@@ -53,7 +53,7 @@ public class VehicleLeasing {
         Vehicle.VehicleDetails details = vehicle.fetchVehicleDetails(vehicleId);
         if (details != null) {
             System.out.println("Selected Vehicle Details:");
-            System.out.println("ID: " + details.getVehicleId() + ", Type: " + details.getType() + ", Make: " + details.getMake() + ", Model: " + details.getModel() + ", Year: " + details.getYear() + ", Price: " + details.getPrice());
+            System.out.println("ID: " + details.getVehicleId() + ", Type: " + details.getType() + ", Make: " + details.getMake() + ", Model: " + details.getModel() + ", Year: " + details.getYear() + ", Price: " + details.getPrice() + ", Leased: " + (details.isLeased() ? "Yes" : "No"));
             userDetails.setSelectedVehicleId(vehicleId); // Set the selected vehicle ID
         } else {
             System.out.println("Vehicle not found.");
@@ -81,19 +81,14 @@ public class VehicleLeasing {
                 System.out.println("Monthly Payment: " + calculatedTerms.getMonthlyPayment());
                 System.out.println("Lease Term: " + calculatedTerms.getLeaseTerm() + " months");
                 System.out.println("Mileage Limit: " + calculatedTerms.getMileageLimit() + " miles");
+                System.out.println("Leasing terms accepted. Proceeding to payment...");
 
-                Scanner scanner = new Scanner(System.in);
-
-                System.out.println("Approve Leasing Terms ? (yes/no):");
-                String consest = scanner.nextLine();
-                if (consest.equalsIgnoreCase("yes")) {
-                    messageService.displayApprovalMessage("Leasing terms accepted !");
-
-                }
                 LeaseContract.LeasingTerms finalTerms = leaseContract.requestLeasingTerms(calculatedTerms);
+                messageService.displayApprovalMessage("Approved");
                 leaseContract.finalizeLeaseContract();
 
                 // Prompt user to proceed to payment
+                Scanner scanner = new Scanner(System.in);
                 System.out.println("Proceed to Payment? (yes/no):");
                 String pay = scanner.nextLine();
                 if (pay.equalsIgnoreCase("yes")) {
@@ -117,20 +112,18 @@ public class VehicleLeasing {
         PaymentGateway.PaymentConfirmation confirmation = paymentGateway.computePayment(paymentDetails);
         if (confirmation != null) {
             messageService.displayMessage("Payment Successful: " + confirmation.getTransactionId());
+            vehicle.leaseVehicle(userDetails.getSelectedVehicleId());
+            leaseContract.addLease(userDetails.getSelectedVehicleId(), userDetails.getUsername());
         }
     }
 
-    public void abandonLeasingProcess() throws InterruptedException {
+    public void abandonLeasingProcess() {
         Database.SessionSettings settings = new Database.SessionSettings();
         settings.setSelectedVehicleId(userDetails.getSelectedVehicleId());
         settings.setPreferences(currentPreferences);
-        System.out.println("Saving Session Info ...");
-        Thread.sleep(1000); // Simulate loading
         database.saveSessionSettings(settings);
-        emailService.sendEmail(userDetails.getUsername(), "LeaseIT: Session Abandoned !");
-        System.out.println("Leasing process abandoned...");
-        Thread.sleep(1000); // Simulate loading
-
+        emailService.sendEmail(userDetails.getUsername(), "Session Abandoned: " + settings);
+        System.out.println("Leasing process abandoned.");
     }
 
     public void continueLeasingProcess() {
@@ -142,6 +135,27 @@ public class VehicleLeasing {
             submitPreferences(currentPreferences);
             selectVehicle(settings.getSelectedVehicleId());
             confirmLeasingTerms(userDetails);
+        }
+    }
+
+    public void viewLeasingSubscriptions() {
+        List<Vehicle.VehicleDetails> leasedVehicles = vehicle.getLeasedVehicles();
+        if (leasedVehicles.isEmpty()) {
+            System.out.println("You have no active leasing subscriptions.");
+        } else {
+            System.out.println("Your Leasing Subscriptions:");
+            for (Vehicle.VehicleDetails details : leasedVehicles) {
+                System.out.println("ID: " + details.getVehicleId() + ", Type: " + details.getType() + ", Make: " + details.getMake() + ", Model: " + details.getModel() + ", Year: " + details.getYear() + ", Price: " + details.getPrice());
+            }
+        }
+        List<LeaseContract.Leasing> pendingLeases = leaseContract.getUserLeasesByStatus(userDetails.getUsername(), "Pending");
+        if (pendingLeases.isEmpty()) {
+            System.out.println("You have no pending vehicle pickups.");
+        } else {
+            System.out.println("Your Pending Vehicle Pickups:");
+            for (LeaseContract.Leasing lease : pendingLeases) {
+                System.out.println("Lease ID: " + lease.getLeaseID() + ", Vehicle ID: " + lease.getVehicleID() + ", Status: " + lease.getStatus());
+            }
         }
     }
 }

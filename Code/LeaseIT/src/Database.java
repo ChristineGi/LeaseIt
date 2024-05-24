@@ -2,16 +2,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Database {
-
     private List<VehiclePreferences> vehiclePreferencesList;
     private List<UserDetails> userDetailsList;
+    private List<String> emails;
     private SessionSettings sessionSettings;
+    private List<Leasing> pendingLeases;
 
     public Database() {
         // Initialize with some mock data
         vehiclePreferencesList = new ArrayList<>();
         userDetailsList = new ArrayList<>();
+        emails = new ArrayList<>();
         sessionSettings = new SessionSettings();
+        pendingLeases = new ArrayList<>();
 
         // Add mock data
         vehiclePreferencesList.add(new VehiclePreferences("Sedan", 15000, "Toyota"));
@@ -22,6 +25,9 @@ public class Database {
         userDetailsList.add(new UserDetails("user", 700, 60000)); // username, credit score, income
         userDetailsList.add(new UserDetails("user2", 650, 50000));
         userDetailsList.add(new UserDetails("user3", 600, 40000));
+
+        // Add emails mock data
+        emails.add("You've got a new leasing offer!");
     }
 
     public List<VehiclePreferences> getVehiclePreferences() {
@@ -47,6 +53,25 @@ public class Database {
 
     public SessionSettings retrieveSessionSettings() {
         return this.sessionSettings;
+    }
+
+    public List<String> getEmails() {
+        return emails;
+    }
+
+    public List<Leasing> getPendingLeases() {
+        // Logic to get pending leases
+        return pendingLeases;
+    }
+
+    public void updateLeaseStatus(String leaseID, String status) {
+        // Logic to update lease status
+        for (Leasing lease : pendingLeases) {
+            if (lease.getLeaseID().equals(leaseID)) {
+                lease.setStatus(status);
+                break;
+            }
+        }
     }
 
     // Supporting classes as inner classes
@@ -110,10 +135,6 @@ public class Database {
             this.income = income;
         }
 
-        public void setUsername(String username) {
-            this.username = username;
-        }
-
         public String getUsername() {
             return username;
         }
@@ -132,6 +153,40 @@ public class Database {
 
         public void setSelectedVehicleId(String selectedVehicleId) {
             this.selectedVehicleId = selectedVehicleId;
+        }
+    }
+
+    public static class Leasing {
+        private String leaseID;
+        private String vehicleID;
+        private String userID;
+        private String status;
+
+        public Leasing(String leaseID, String vehicleID, String userID, String status) {
+            this.leaseID = leaseID;
+            this.vehicleID = vehicleID;
+            this.userID = userID;
+            this.status = status;
+        }
+
+        public String getLeaseID() {
+            return leaseID;
+        }
+
+        public String getVehicleID() {
+            return vehicleID;
+        }
+
+        public String getUserID() {
+            return userID;
+        }
+
+        public String getStatus() {
+            return status;
+        }
+
+        public void setStatus(String status) {
+            this.status = status;
         }
     }
 }
