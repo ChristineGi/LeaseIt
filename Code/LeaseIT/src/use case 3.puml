@@ -1,0 +1,60 @@
+@startuml
+actor User
+participant Home
+participant "Leasing Contract" as LC
+participant "Vehicle Tracking" as VT
+participant "Location Configuration" as Location
+participant Cloud
+participant AI
+participant "Google Maps" as Maps
+participant Message
+
+User -> Home : select Vehicle Tracking
+Home -> LC : checkActiveLease()
+LC -> Location: checkLocationConfiguration()
+
+alt
+Location --> Home : returnVehicleLocationStatus(active)
+else
+Location --> Home : returnVehicleLocationStatus(inactive)
+Home -> Home : showAddLocationServices()
+User -> Home : Accepts
+Home -> LC : getVehicleInfo()
+LC -> Location : setBoundaries()
+User -> Location : adjust Boundaries
+Location -> VT : completeRegistration()
+VT -> Cloud : connectToCloud()
+Cloud -> Message : showMessage("Success Registration")
+Message --> Home : return
+end
+
+Home -> VT : requestLocationPermission()
+VT -> Message : showMessage("Grant Permission")
+User -> Message : Accepts
+Message --> VT : return
+
+alt
+VT -> Cloud : connectToCloud()
+else
+Cloud --> VT : Connection Failed
+VT -> Message: showMessage()
+Message --> VT : return
+User -> VT : retryTracking()
+VT -> Cloud : attemtReconnection()
+end
+
+Cloud -> Maps : loadVehicleCoords()
+Maps -> Location : getBoundarySettings()
+Location -> AI : analyzeRouteLogs()
+AI --> LT : noUnusualActivityDetected()
+LT -> Maps : locateParkingAndFuel()
+Maps --> VT : displayData()
+User -> VT : select Smart Navigation
+VT --> Maps : loadRouteToVehicle()
+Maps -> Maps : startNavigation()
+Maps -> Maps : updateLocation()
+Maps -> VT : completeNavigation()
+VT -> Message : showMessage("You've reached your car")
+Message --> VT : displayData()
+VT --> Home: return
+@enduml

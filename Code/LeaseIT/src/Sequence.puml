@@ -14,7 +14,6 @@ UIL -> Database : getVehiclePreferences()
 Database --> UIL : return Vehicle Preferences
 User -> UIL : submitPreferences(preferences)
 UIL -> Database : searchVehicles(preferences)
-Database --> UIL : return Vehicles
 User -> UIL : selectVehicle(vehicleId)
 UIL -> Database : fetchVehicleDetails(vehicleId)
 Database -> Vehicle : loadVehicle(details)

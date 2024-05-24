@@ -28,7 +28,7 @@ public class LeaseContract {
 
     public void addLease(String vehicleID, String userID) {
         String leaseID = UUID.randomUUID().toString();
-        Leasing lease = new Leasing(leaseID, vehicleID, userID, "Pending");
+        Leasing lease = new Leasing(leaseID, vehicleID, userID, "Pending", false);
         leases.add(lease);
         System.out.println("Lease added: " + leaseID);
     }
@@ -55,6 +55,42 @@ public class LeaseContract {
             }
         }
         return userLeases;
+    }
+
+    public boolean checkActiveLease(String userID) {
+        for (Leasing lease : leases) {
+            if (lease.getUserID().equals(userID) && lease.getStatus().equals("Active")) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Vehicle.VehicleDetails getVehicleInfo(String leaseID) {
+        for (Leasing lease : leases) {
+            if (lease.getLeaseID().equals(leaseID)) {
+                return new Vehicle().fetchVehicleDetails(lease.getVehicleID());
+            }
+        }
+        return null;
+    }
+
+    public void setLocationConfigurationStatus(String leaseID, boolean status) {
+        for (Leasing lease : leases) {
+            if (lease.getLeaseID().equals(leaseID)) {
+                lease.setLocationConfigured(status);
+                break;
+            }
+        }
+    }
+
+    public boolean isLocationConfigured(String leaseID) {
+        for (Leasing lease : leases) {
+            if (lease.getLeaseID().equals(leaseID)) {
+                return lease.isLocationConfigured();
+            }
+        }
+        return false;
     }
 
     public static class LeasingTerms {
@@ -98,12 +134,14 @@ public class LeaseContract {
         private String vehicleID;
         private String userID;
         private String status;
+        private boolean locationConfigured;
 
-        public Leasing(String leaseID, String vehicleID, String userID, String status) {
+        public Leasing(String leaseID, String vehicleID, String userID, String status, boolean locationConfigured) {
             this.leaseID = leaseID;
             this.vehicleID = vehicleID;
             this.userID = userID;
             this.status = status;
+            this.locationConfigured = locationConfigured;
         }
 
         public String getLeaseID() {
@@ -124,6 +162,14 @@ public class LeaseContract {
 
         public void setStatus(String status) {
             this.status = status;
+        }
+
+        public boolean isLocationConfigured() {
+            return locationConfigured;
+        }
+
+        public void setLocationConfigured(boolean locationConfigured) {
+            this.locationConfigured = locationConfigured;
         }
     }
 }

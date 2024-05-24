@@ -184,7 +184,7 @@ public class VehiclePickup {
                 emailService.sendEmail(userDetails.getUsername(), "Dealership: Proof of pickup email sent.");
                 selectedLease.setStatus("Active");
                 System.out.println("Vehicle pickup process completed successfully.");
-                
+
             } else {
                 System.out.println("QR Code verification failed. Please try again later.");
             }
