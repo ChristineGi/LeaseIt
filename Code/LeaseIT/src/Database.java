@@ -1,42 +1,23 @@
+
+import  java.util.List;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Database {
 
     private List<VehiclePreferences> vehiclePreferencesList;
-    private List<Vehicle> vehicles;
-    private List<VehicleDetails> vehicleDetailsList;
 
     public Database() {
         // Initialize with some mock data
         vehiclePreferencesList = new ArrayList<>();
-        vehicles = new ArrayList<>();
-        vehicleDetailsList = new ArrayList<>();
 
         // Add mock data
-        vehiclePreferencesList.add(new VehiclePreferences("Sedan", "15000-20000", "Toyota"));
-        vehiclePreferencesList.add(new VehiclePreferences("SUV", "20000-30000", "Honda"));
-        vehicles.add(new Vehicle("V1234", "Sedan", "Toyota", "Camry"));
-        vehicles.add(new Vehicle("V5678", "SUV", "Honda", "CR-V"));
-        vehicleDetailsList.add(new VehicleDetails("V1234", "Sedan", "Toyota", "Camry", 2021, 15000));
-        vehicleDetailsList.add(new VehicleDetails("V5678", "SUV", "Honda", "CR-V", 2022, 20000));
+        vehiclePreferencesList.add(new VehiclePreferences("Sedan", 15000, "Toyota"));
+        vehiclePreferencesList.add(new VehiclePreferences("SUV", 30000, "Honda"));
+        // Add more mock data as needed
     }
 
     public List<VehiclePreferences> getVehiclePreferences() {
         return vehiclePreferencesList;
-    }
-
-    public List<Vehicle> searchVehicles(VehiclePreferences preferences) {
-        return vehicles; // Simplified for this example
-    }
-
-    public VehicleDetails fetchVehicleDetails(String vehicleId) {
-        for (VehicleDetails details : vehicleDetailsList) {
-            if (details.getVehicleId().equals(vehicleId)) {
-                return details;
-            }
-        }
-        return null;
     }
 
     public void saveSessionSettings() {
@@ -51,96 +32,55 @@ public class Database {
 
     public static class VehiclePreferences {
         private String vehicleType;
-        private String budgetRange;
+        private int budget;
         private String preferredBrands;
 
-        public VehiclePreferences(String vehicleType, String budgetRange, String preferredBrands) {
+        public VehiclePreferences(String vehicleType, int budget, String preferredBrands) {
             this.vehicleType = vehicleType;
-            this.budgetRange = budgetRange;
+            this.budget = budget;
             this.preferredBrands = preferredBrands;
+        }
+
+        public String getVehicleType() {
+            return vehicleType;
+        }
+
+        public int getBudget() {
+            return budget;
+        }
+
+        public String getPreferredBrands() {
+            return preferredBrands;
         }
 
         // Getters and Setters
     }
 
-    public static class Vehicle {
-        private String vehicleId;
-        private String type;
-        private String make;
-        private String model;
-
-        public Vehicle(String vehicleId, String type, String make, String model) {
-            this.vehicleId = vehicleId;
-            this.type = type;
-            this.make = make;
-            this.model = model;
-        }
-
-        public String getVehicleId() {
-            return vehicleId;
-        }
-
-        public String getType() {
-            return type;
-        }
-
-        public String getMake() {
-            return make;
-        }
-
-        public String getModel() {
-            return model;
-        }
-
-        // Other getters and setters
-    }
-
-    public static class VehicleDetails {
-        private String vehicleId;
-        private String type;
-        private String make;
-        private String model;
-        private int year;
-        private int price;
-
-        public VehicleDetails(String vehicleId, String type, String make, String model, int year, int price) {
-            this.vehicleId = vehicleId;
-            this.type = type;
-            this.make = make;
-            this.model = model;
-            this.year = year;
-            this.price = price;
-        }
-
-        public String getVehicleId() {
-            return vehicleId;
-        }
-
-        public String getType() {
-            return type;
-        }
-
-        public String getMake() {
-            return make;
-        }
-
-        public String getModel() {
-            return model;
-        }
-
-        public int getYear() {
-            return year;
-        }
-
-        public int getPrice() {
-            return price;
-        }
-
-        // Other getters and setters
-    }
-
     public static class LeasingTerms {
-        // Fields and methods for leasing terms
+        private double monthlyPayment;
+        private int leaseTerm;
+        private int mileageLimit;
+
+        public LeasingTerms() {
+            // Default values for demonstration
+            this.monthlyPayment = 300.0;
+            this.leaseTerm = 36; // 36 months
+            this.mileageLimit = 12000; // 12000 miles per year
+        }
+
+        public double getMonthlyPayment() {
+            return monthlyPayment;
+        }
+
+        public int getLeaseTerm() {
+            return leaseTerm;
+        }
+
+        public int getMileageLimit() {
+            return mileageLimit;
+        }
+
+        // Setters can be added as needed
     }
 
     public static class PaymentDetails {

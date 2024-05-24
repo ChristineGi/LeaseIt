@@ -22,18 +22,20 @@ public class UIVehicleLeasing {
 
     public void showLeasingVehicleScreen() {
         System.out.println("Vehicle Leasing Screen");
+        List<Database.VehiclePreferences> preferences = database.getVehiclePreferences();
+        // Display preferences to user
     }
 
     public void submitPreferences(Database.VehiclePreferences preferences) {
-        List<Database.Vehicle> vehicles = database.searchVehicles(preferences);
+        List<Vehicle.VehicleDetails> vehicles = vehicle.searchVehicles(preferences);
         System.out.println("Available Vehicles:");
-        for (Database.Vehicle v : vehicles) {
+        for (Vehicle.VehicleDetails v : vehicles) {
             System.out.println("ID: " + v.getVehicleId() + ", Type: " + v.getType() + ", Make: " + v.getMake() + ", Model: " + v.getModel());
         }
     }
 
     public void selectVehicle(String vehicleId) {
-        Database.VehicleDetails details = database.fetchVehicleDetails(vehicleId);
+        Vehicle.VehicleDetails details = vehicle.fetchVehicleDetails(vehicleId);
         if (details != null) {
             System.out.println("Selected Vehicle Details:");
             System.out.println("ID: " + details.getVehicleId() + ", Type: " + details.getType() + ", Make: " + details.getMake() + ", Model: " + details.getModel() + ", Year: " + details.getYear() + ", Price: " + details.getPrice());
@@ -43,13 +45,31 @@ public class UIVehicleLeasing {
     }
 
     public void confirmLeasingTerms(Database.UserDetails userDetails, Database.LeasingTerms terms) {
-        boolean isCreditWorthy = taxGateway.checkCreditworthiness(userDetails, terms);
-        if (isCreditWorthy) {
-            messageService.displayApprovalMessage("Approved");
-            leaseContract.finalizeLeaseContract();
-        } else {
-            messageService.displayRejectionMessage("Rejected");
-            System.out.println("Creditworthiness check failed. Please revise your application.");
+        try {
+            System.out.println("System connects to Tax Gateway...");
+            Thread.sleep(1000); // Simulate loading
+            System.out.println("Fetching Data...");
+            Thread.sleep(1000); // Simulate loading
+            boolean isCreditWorthy = taxGateway.checkCreditworthiness(userDetails, terms);
+            if (isCreditWorthy) {
+                System.out.println("Check Creditworthiness: Approved");
+                Thread.sleep(1000); // Simulate loading
+                System.out.println("Displaying Leasing Terms:");
+                // Simulate displaying leasing terms
+                System.out.println("Monthly Payment: " + terms.getMonthlyPayment());
+                System.out.println("Lease Term: " + terms.getLeaseTerm() + " months");
+                System.out.println("Mileage Limit: " + terms.getMileageLimit() + " miles");
+                System.out.println("Do you accept the leasing terms? (yes/no):");
+                messageService.displayApprovalMessage("Approved");
+                leaseContract.finalizeLeaseContract();
+            } else {
+                System.out.println("Check Creditworthiness: Rejected");
+                Thread.sleep(1000); // Simulate loading
+                messageService.displayRejectionMessage("Rejected");
+                System.out.println("Creditworthiness check failed. Please revise your application.");
+            }
+        } catch (InterruptedException e) {
+            System.out.println("An error occurred: " + e.getMessage());
         }
     }
 

@@ -1,14 +1,14 @@
 public class Message {
 
     public void displayApprovalMessage(String message) {
-        // Display approval message to user
+        System.out.println("Approval Message: " + message);
     }
 
     public void displayRejectionMessage(String message) {
-        // Display rejection message to user
+        System.out.println("Rejection Message: " + message);
     }
 
     public void displayMessage(String message) {
-        // Display generic message to user
+        System.out.println("Message: " + message);
     }
 }

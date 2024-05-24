@@ -1,9 +1,12 @@
-<mxfile host="Electron" modified="2024-05-23T22:01:53.146Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.2.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="_9E9N6yvfvm_SG2oVzaT" version="24.2.5" type="device" pages="9">
+<mxfile host="Electron" modified="2024-05-23T22:05:29.233Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.2.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="JPTZHuFP8T42yhOqN9Oj" version="24.2.5" type="device" pages="9">
   <diagram name="Use Case 1 : Sequence" id="X5nYgyofVkyIiH-S4-DQ">
-    <mxGraphModel dx="2428" dy="1561" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2631" dy="1706" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="yuPSBtp--XTXEwSO5r7i-6" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="97.5" y="315" width="13" height="122" as="geometry" />
+        </mxCell>
         <mxCell id="deQ8QW3vT8apWx2ZHvul-122" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#FF0000;strokeWidth=2;" parent="1" vertex="1">
           <mxGeometry x="-537" y="923" width="1690" height="325" as="geometry" />
         </mxCell>
@@ -21,9 +24,6 @@
         </mxCell>
         <mxCell id="yuPSBtp--XTXEwSO5r7i-7" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="330.5" y="432" width="13" height="449" as="geometry" />
-        </mxCell>
-        <mxCell id="yuPSBtp--XTXEwSO5r7i-6" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-          <mxGeometry x="97.5" y="315" width="13" height="122" as="geometry" />
         </mxCell>
         <mxCell id="yuPSBtp--XTXEwSO5r7i-5" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="-109.5" y="-11" width="13" height="1252" as="geometry" />
@@ -462,7 +462,7 @@
             <mxPoint x="-74" y="-18" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="deQ8QW3vT8apWx2ZHvul-102" value="Reminder" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
+        <mxCell id="deQ8QW3vT8apWx2ZHvul-102" value="Email" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
           <mxGeometry x="966" y="-170.5" width="110" height="1647.5" as="geometry" />
         </mxCell>
         <mxCell id="deQ8QW3vT8apWx2ZHvul-106" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;curved=0;" parent="1" edge="1">
@@ -475,7 +475,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="deQ8QW3vT8apWx2ZHvul-107" value="scheduleReminder()" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="deQ8QW3vT8apWx2ZHvul-106" vertex="1" connectable="0">
+        <mxCell id="deQ8QW3vT8apWx2ZHvul-107" value="sendEmail()" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="deQ8QW3vT8apWx2ZHvul-106" vertex="1" connectable="0">
           <mxGeometry x="-0.4483" y="1" relative="1" as="geometry">
             <mxPoint x="1" y="-11" as="offset" />
           </mxGeometry>
@@ -490,7 +490,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="deQ8QW3vT8apWx2ZHvul-114" value="respondToReminder()" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="deQ8QW3vT8apWx2ZHvul-113" vertex="1" connectable="0">
+        <mxCell id="deQ8QW3vT8apWx2ZHvul-114" value="interacts" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="deQ8QW3vT8apWx2ZHvul-113" vertex="1" connectable="0">
           <mxGeometry x="0.2215" y="-3" relative="1" as="geometry">
             <mxPoint x="-16" y="-16" as="offset" />
           </mxGeometry>
