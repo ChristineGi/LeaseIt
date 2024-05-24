@@ -37,4 +37,21 @@ Email --> VP : return
 VP -> Database : updateLeaseStatus("Active")
 Database --> VP : return
 
+
+alt after check availabilty on Dealeship
+Dealership --> VP: notifyDelay()
+User -> VP : Accept
+VP --> Dealership : monitorPreparation()
+Dealership -> Email : notifyCompletionEmail()
+Email --> VP : return
+
+alt Broken qr code
+Wallet --> VP: qrVerificationResult("Fail")
+VP -> Dealership: reportFailedVerification()
+Dealership --> VP: propmtRegenerateCode()
+VP -> Email : qrCodeEmail()
+Email --> VP : return
+
+
+
 @enduml

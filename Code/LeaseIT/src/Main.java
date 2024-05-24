@@ -106,16 +106,11 @@ public class Main {
                         for (int i = 0; i < emails.size(); i++) {
                             System.out.println((i + 1) + ". " + emails.get(i));
                         }
-                        System.out.println("Enter the email number to read, 'd' followed by the email number to delete, or '0' to go back:");
-                        String emailChoice = scanner.next();
-                        if (emailChoice.equals("0")) {
-                            continue;
-                        } else if (emailChoice.startsWith("d")) {
-                            int emailIndex = Integer.parseInt(emailChoice.substring(1)) - 1;
-                            emailService.deleteEmail(loggedInUsername, emailIndex);
-                        } else {
-                            int emailIndex = Integer.parseInt(emailChoice) - 1;
-                            System.out.println("Email: " + emails.get(emailIndex));
+                        System.out.println("Enter the email number to continue the leasing process or '0' to go back:");
+                        int emailChoice = scanner.nextInt();
+                        scanner.nextLine(); // Consume newline
+                        if (emailChoice > 0 && emailChoice <= emails.size()) {
+                            vehicleLeasing.continueLeasingProcess();
                         }
                     }
                 } else if (choice == 3) {

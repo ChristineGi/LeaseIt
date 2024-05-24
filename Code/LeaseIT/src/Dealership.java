@@ -18,6 +18,13 @@ public class Dealership {
         return pickupTimes;
     }
 
+    public boolean isVehicleAvailableAtDealership(String vehicleId, String dealership) {
+        // Logic to check if the vehicle is available at the specified dealership
+        Vehicle vehicle = new Vehicle();
+        Vehicle.VehicleDetails details = vehicle.fetchVehicleDetails(vehicleId);
+        return details != null && details.getDealership().equals(dealership) && details.getStatus().equals("Available");
+    }
+
     public boolean scheduleDealershipAppointment(String time) {
         // Logic to schedule dealership appointment
         System.out.println("Dealership appointment scheduled for: " + time);
@@ -27,5 +34,28 @@ public class Dealership {
     public void sendEmail(String details) {
         // Logic to send email to user
         System.out.println("Email sent with details: " + details);
+    }
+
+    public void monitorPreparation() throws InterruptedException {
+        System.out.println("Monitoring vehicle preparation...");
+        Thread.sleep(3000);
+
+    }
+
+    public void notifyCompletionEmail() throws InterruptedException {
+        System.out.println("Vehicle preparation completed !");
+        Thread.sleep(1000);
+        System.out.println("Sending notification email...");
+        Thread.sleep(1000);
+    }
+
+    public void reportFailedVerification() throws InterruptedException {
+        System.out.println("Reported failed QR code verification to the dealership.");
+        Thread.sleep(1000);
+
+    }
+
+    public void promptRegenerateCode() {
+        System.out.println("Dealership prompted to regenerate QR code.");
     }
 }

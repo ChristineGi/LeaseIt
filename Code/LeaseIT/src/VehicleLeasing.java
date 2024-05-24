@@ -44,7 +44,7 @@ public class VehicleLeasing {
         }
         System.out.println("Available Vehicles:");
         for (Vehicle.VehicleDetails v : vehicles) {
-            System.out.println("ID: " + v.getVehicleId() + ", Type: " + v.getType() + ", Make: " + v.getMake() + ", Model: " + v.getModel() + ", Leased: " + (v.isLeased() ? "Yes" : "No"));
+            System.out.println("ID: " + v.getVehicleId() + ", Type: " + v.getType() + ", Make: " + v.getMake() + ", Model: " + v.getModel() + ", Price: " + v.getPrice() + ", Leased: " + (v.isLeased() ? "Yes" : "No"));
         }
         return true;
     }
@@ -145,7 +145,8 @@ public class VehicleLeasing {
         } else {
             System.out.println("Your Leasing Subscriptions:");
             for (Vehicle.VehicleDetails details : leasedVehicles) {
-                System.out.println("ID: " + details.getVehicleId() + ", Type: " + details.getType() + ", Make: " + details.getMake() + ", Model: " + details.getModel() + ", Year: " + details.getYear() + ", Price: " + details.getPrice());
+                System.out.println("ID: " + details.getVehicleId() + ", Type: " + details.getType() + ", Make: " + details.getMake()
+                        + ", Model: " + details.getModel() + ", Year: " + details.getYear() + ", Price: " + details.getPrice() + ", Status: " + details.getStatus());
             }
         }
         List<LeaseContract.Leasing> pendingLeases = leaseContract.getUserLeasesByStatus(userDetails.getUsername(), "Pending");
