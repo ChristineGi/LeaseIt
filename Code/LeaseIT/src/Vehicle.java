@@ -62,6 +62,7 @@ public class Vehicle {
                 filteredVehicles.add(details);
             }
         }
+
         return filteredVehicles;
     }
 
@@ -75,7 +76,6 @@ public class Vehicle {
     }
 
     public LeasingTerms requestLeasingTerms(String vehicleId) {
-        // Request leasing terms for the given vehicle
         return new LeasingTerms();
     }
 

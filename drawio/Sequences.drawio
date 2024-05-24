@@ -1,11 +1,11 @@
-<mxfile host="Electron" modified="2024-05-23T23:35:35.489Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.2.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="H4Mzq13adHLK_iBUUh3Z" version="24.2.5" type="device" pages="10">
+<mxfile host="Electron" modified="2024-05-24T09:15:03.160Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.2.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="Z6yiE1ScxGIJVBWq48rC" version="24.2.5" type="device" pages="10">
   <diagram name="Use Case 1 : Sequence" id="X5nYgyofVkyIiH-S4-DQ">
-    <mxGraphModel dx="3104" dy="1781" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2395" dy="1356" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="yuPSBtp--XTXEwSO5r7i-6" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-          <mxGeometry x="97.5" y="315" width="13" height="122" as="geometry" />
+          <mxGeometry x="97.5" y="315" width="12.5" height="41" as="geometry" />
         </mxCell>
         <mxCell id="deQ8QW3vT8apWx2ZHvul-122" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#FF0000;strokeWidth=2;" parent="1" vertex="1">
           <mxGeometry x="-537" y="923" width="1690" height="325" as="geometry" />
@@ -23,7 +23,7 @@
           <mxGeometry x="672.5" y="601" width="13" height="76" as="geometry" />
         </mxCell>
         <mxCell id="yuPSBtp--XTXEwSO5r7i-7" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-          <mxGeometry x="330.5" y="432" width="13" height="449" as="geometry" />
+          <mxGeometry x="330.5" y="377" width="13" height="504" as="geometry" />
         </mxCell>
         <mxCell id="yuPSBtp--XTXEwSO5r7i-5" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="-109.5" y="-11" width="13" height="1252" as="geometry" />
@@ -117,15 +117,18 @@
             <mxPoint x="22" y="-9" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="deQ8QW3vT8apWx2ZHvul-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;curved=0;" parent="1" edge="1">
+        <mxCell id="deQ8QW3vT8apWx2ZHvul-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;curved=0;" parent="1" edge="1" target="deQ8QW3vT8apWx2ZHvul-6">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="-299.99999999999994" y="399" as="sourcePoint" />
             <mxPoint x="101.8" y="399" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="-300" y="400" />
+            </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="deQ8QW3vT8apWx2ZHvul-43" value="requestLeasingTerms(terms)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="deQ8QW3vT8apWx2ZHvul-42" vertex="1" connectable="0">
           <mxGeometry x="0.3828" relative="1" as="geometry">
-            <mxPoint x="8" y="-12" as="offset" />
+            <mxPoint x="60" y="-13" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="deQ8QW3vT8apWx2ZHvul-65" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;curved=0;" parent="1" edge="1">
@@ -185,23 +188,10 @@
             <mxPoint x="-127" y="-12" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="deQ8QW3vT8apWx2ZHvul-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;curved=0;" parent="1" source="deQ8QW3vT8apWx2ZHvul-5" target="deQ8QW3vT8apWx2ZHvul-6" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="215" y="436" />
-              <mxPoint x="215" y="436" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="deQ8QW3vT8apWx2ZHvul-46" value="calculateLeasingTerms(vehicleDetails)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="deQ8QW3vT8apWx2ZHvul-45" vertex="1" connectable="0">
-          <mxGeometry x="0.0276" relative="1" as="geometry">
-            <mxPoint y="-13" as="offset" />
-          </mxGeometry>
-        </mxCell>
         <mxCell id="deQ8QW3vT8apWx2ZHvul-5" value="Vehicle" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
           <mxGeometry x="49" y="-170" width="110" height="1690" as="geometry" />
         </mxCell>
-        <mxCell id="deQ8QW3vT8apWx2ZHvul-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;curved=0;" parent="1" edge="1">
+        <mxCell id="deQ8QW3vT8apWx2ZHvul-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;curved=0;dashed=1;" parent="1" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="336.5" y="484" as="sourcePoint" />
             <mxPoint x="-298.1249999999998" y="484.4999999999998" as="targetPoint" />
@@ -514,6 +504,21 @@
         </mxCell>
         <mxCell id="8pIMH9SOAo7j8ZP5-yna-1" value="&lt;p style=&quot;margin: 0cm; font-size: 13px; font-family: Calibri, sans-serif; text-align: start;&quot; class=&quot;MsoNormal&quot;&gt;&lt;b&gt;&lt;span style=&quot;color: red;&quot; lang=&quot;EN-US&quot;&gt;Alternative&lt;/span&gt;&lt;span style=&quot;color: red;&quot; lang=&quot;EN-US&quot;&gt; &lt;/span&gt;&lt;/b&gt;&lt;b&gt;&lt;span style=&quot;color: red;&quot; lang=&quot;EN-US&quot;&gt;Flow&lt;/span&gt;&lt;span style=&quot;color: red;&quot; lang=&quot;EN-US&quot;&gt; &lt;/span&gt;&lt;span style=&quot;color: red;&quot;&gt;2:&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/b&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;&lt;span style=&quot;color: red;&quot;&gt;Ο χρήστης&amp;nbsp;&lt;/span&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0cm; font-size: 13px; font-family: Calibri, sans-serif; text-align: start;&quot; class=&quot;MsoNormal&quot;&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;&lt;span style=&quot;color: red;&quot;&gt;εγκαταλείπει τη διαδικασία&lt;/span&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0cm; font-size: 12pt; font-family: Calibri, sans-serif; text-align: start;&quot; class=&quot;MsoNormal&quot;&gt;&lt;b&gt;&lt;span style=&quot;color: red;&quot;&gt;&lt;/span&gt;&lt;/b&gt;&lt;/p&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=default;strokeColor=#FF0000;strokeWidth=2;" parent="1" vertex="1">
           <mxGeometry x="-48" y="946" width="204" height="39" as="geometry" />
+        </mxCell>
+        <mxCell id="AV3EUY-Azo27WLIRQI5s-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;curved=0;exitX=0.486;exitY=0.772;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="344.4799999999996" y="428.0000000000001" as="sourcePoint" />
+            <mxPoint x="343.50380952380965" y="449.9999999999998" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="453.48" y="428" />
+              <mxPoint x="453.48" y="450" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AV3EUY-Azo27WLIRQI5s-2" value="calculateLeasingTerms(vehicleDetails)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="AV3EUY-Azo27WLIRQI5s-1">
+          <mxGeometry x="-0.797" y="1" relative="1" as="geometry">
+            <mxPoint x="81" y="-15" as="offset" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>

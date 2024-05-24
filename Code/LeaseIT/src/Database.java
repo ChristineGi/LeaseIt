@@ -1,31 +1,52 @@
-
-import  java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Database {
 
     private List<VehiclePreferences> vehiclePreferencesList;
+    private List<UserDetails> userDetailsList;
+    private SessionSettings sessionSettings;
 
     public Database() {
         // Initialize with some mock data
         vehiclePreferencesList = new ArrayList<>();
+        userDetailsList = new ArrayList<>();
+        sessionSettings = new SessionSettings();
 
         // Add mock data
         vehiclePreferencesList.add(new VehiclePreferences("Sedan", 15000, "Toyota"));
         vehiclePreferencesList.add(new VehiclePreferences("SUV", 30000, "Honda"));
         // Add more mock data as needed
+
+        // Add user mock data
+        userDetailsList.add(new UserDetails("user", 700, 60000)); // username, credit score, income
+        userDetailsList.add(new UserDetails("user2", 650, 50000));
+        userDetailsList.add(new UserDetails("user3", 600, 40000));
     }
 
     public List<VehiclePreferences> getVehiclePreferences() {
         return vehiclePreferencesList;
     }
 
-    public void saveSessionSettings() {
-        // Save session settings to database
+    public List<UserDetails> getUserDetailsList() {
+        return userDetailsList;
+    }
+
+    public UserDetails getUserDetails(String username) {
+        for (UserDetails user : userDetailsList) {
+            if (user.getUsername().equals(username)) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+    public void saveSessionSettings(SessionSettings settings) {
+        this.sessionSettings = settings;
     }
 
     public SessionSettings retrieveSessionSettings() {
-        return new SessionSettings();
+        return this.sessionSettings;
     }
 
     // Supporting classes as inner classes
@@ -56,48 +77,61 @@ public class Database {
         // Getters and Setters
     }
 
-    public static class LeasingTerms {
-        private double monthlyPayment;
-        private int leaseTerm;
-        private int mileageLimit;
-
-        public LeasingTerms() {
-            // Default values for demonstration
-            this.monthlyPayment = 300.0;
-            this.leaseTerm = 36; // 36 months
-            this.mileageLimit = 12000; // 12000 miles per year
-        }
-
-        public double getMonthlyPayment() {
-            return monthlyPayment;
-        }
-
-        public int getLeaseTerm() {
-            return leaseTerm;
-        }
-
-        public int getMileageLimit() {
-            return mileageLimit;
-        }
-
-        // Setters can be added as needed
-    }
-
-    public static class PaymentDetails {
-        // Fields and methods for payment details
-    }
-
-    public static class PaymentConfirmation {
-        public String getTransactionId() {
-            return "12345"; // Example transaction id
-        }
-    }
-
     public static class SessionSettings {
-        // Fields and methods for session settings
+        private String selectedVehicleId;
+        private VehiclePreferences preferences;
+
+        public String getSelectedVehicleId() {
+            return selectedVehicleId;
+        }
+
+        public void setSelectedVehicleId(String selectedVehicleId) {
+            this.selectedVehicleId = selectedVehicleId;
+        }
+
+        public VehiclePreferences getPreferences() {
+            return preferences;
+        }
+
+        public void setPreferences(VehiclePreferences preferences) {
+            this.preferences = preferences;
+        }
     }
 
     public static class UserDetails {
-        // Fields and methods for user details
+        private String username;
+        private int creditScore;
+        private int income;
+        private String selectedVehicleId;
+
+        public UserDetails(String username, int creditScore, int income) {
+            this.username = username;
+            this.creditScore = creditScore;
+            this.income = income;
+        }
+
+        public void setUsername(String username) {
+            this.username = username;
+        }
+
+        public String getUsername() {
+            return username;
+        }
+
+        public int getCreditScore() {
+            return creditScore;
+        }
+
+        public int getIncome() {
+            return income;
+        }
+
+        public String getSelectedVehicleId() {
+            return selectedVehicleId;
+        }
+
+        public void setSelectedVehicleId(String selectedVehicleId) {
+            this.selectedVehicleId = selectedVehicleId;
+        }
     }
 }
