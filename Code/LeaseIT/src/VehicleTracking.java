@@ -41,6 +41,7 @@ public class VehicleTracking {
         googleMaps.startNavigation();
     }
 
+
     public void updateLocation() throws InterruptedException {
         googleMaps.updateLocation();
     }
