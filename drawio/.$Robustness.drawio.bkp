@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2024-05-25T16:34:54.381Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.2.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="SLbwKbW6e-KRuzZ6JWs0" version="24.2.5" type="device" pages="9">
+<mxfile host="Electron" modified="2024-05-25T16:35:08.760Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.2.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="QzYGQpakslP6_gBTPy9G" version="24.2.5" type="device" pages="9">
   <diagram id="2FH4rY_c5h08tlJA4a9-" name="Use Case 1: Robustness Car Leasing">
     <mxGraphModel dx="4835" dy="1564" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -2105,7 +2105,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="JsV3n2Bty8Ifrz81BCpw" name="Use Case 6 Robustness">
-    <mxGraphModel dx="4398" dy="1662" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3949" dy="1350" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -2350,7 +2350,7 @@
           <mxGeometry x="-1409" y="253.63" width="101" height="82.25" as="geometry" />
         </mxCell>
         <mxCell id="JFVtn4pu9B5WgB8Mwdh2-6" value="&lt;p style=&quot;font-size: 19px;&quot; class=&quot;MsoNormal&quot;&gt;&lt;b&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;&quot;&gt;Use Case 6: &lt;/span&gt;&lt;/b&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;&quot;&gt;Technical Support&lt;/span&gt;&lt;/p&gt;" style="text;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="-942.5" y="44" width="378" height="89" as="geometry" />
+          <mxGeometry x="-1450" y="148" width="270" height="66" as="geometry" />
         </mxCell>
         <mxCell id="Xb-ANouiG0gepN59m7gK-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="Xb-ANouiG0gepN59m7gK-3" target="Xb-ANouiG0gepN59m7gK-4" edge="1">
           <mxGeometry relative="1" as="geometry" />

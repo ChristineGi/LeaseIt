@@ -144,7 +144,7 @@ public class VehicleMaintenance {
 
         private void prioritizeUrgentMaintenance() {
             System.out.println("Prioritizing urgent maintenance...");
-            //maintenanceCenter.prioritizeUrgentMaintenance();
+            maintenanceCenter.prioritizeUrgentMaintenance();
             try {
                 selectMaintenance();
             } catch (InterruptedException e) {

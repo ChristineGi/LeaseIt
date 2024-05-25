@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2024-05-25T16:35:08.760Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.2.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="QzYGQpakslP6_gBTPy9G" version="24.2.5" type="device" pages="9">
+<mxfile host="Electron" modified="2024-05-25T19:29:52.519Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.2.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="RkRiepbDUdzqIsg1Pl3i" version="24.2.5" type="device" pages="9">
   <diagram id="2FH4rY_c5h08tlJA4a9-" name="Use Case 1: Robustness Car Leasing">
     <mxGraphModel dx="4835" dy="1564" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -1387,7 +1387,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="jz5Kp38GvxnJ8Zn_VHRG" name="Use Case 4 Robustness">
-    <mxGraphModel dx="3559" dy="1080" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3417" dy="982" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1634,6 +1634,9 @@
         <mxCell id="iYnPwR_ihSi361QInRKy-13" value="&lt;font style=&quot;font-size: 11px;&quot; color=&quot;#ff0000&quot;&gt;Δημιουγία&lt;/font&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;&lt;font style=&quot;font-size: 11px;&quot; color=&quot;#ff0000&quot;&gt;Φόρμας&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;&lt;font style=&quot;font-size: 11px;&quot; color=&quot;#ff0000&quot;&gt;Περιγραφής&lt;/font&gt;&lt;/div&gt;" style="ellipse;shape=umlControl;whiteSpace=wrap;html=1;strokeColor=#FF0000;" parent="1" vertex="1">
           <mxGeometry x="-1407" y="830" width="89" height="96" as="geometry" />
         </mxCell>
+        <mxCell id="rG6WbVJPc15LEpDcUNxS-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#FF0000;" edge="1" parent="1" source="iYnPwR_ihSi361QInRKy-23" target="rG6WbVJPc15LEpDcUNxS-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="iYnPwR_ihSi361QInRKy-23" value="Ανάλυση Φόρμας μέσω&lt;div&gt;Αλγορίθμου&lt;/div&gt;" style="ellipse;shape=umlControl;whiteSpace=wrap;html=1;fontColor=#FF0000;strokeColor=#FF0000;" parent="1" vertex="1">
           <mxGeometry x="-767" y="827.63" width="90" height="100.75" as="geometry" />
         </mxCell>
@@ -1679,11 +1682,12 @@
             <mxPoint x="-1033" y="877" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="KuDxCaD1VyoS_zhoZlV2-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#FF0000;" edge="1" parent="1" source="iYnPwR_ihSi361QInRKy-23">
+        <mxCell id="KuDxCaD1VyoS_zhoZlV2-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#FF0000;exitX=0.987;exitY=0.509;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="rG6WbVJPc15LEpDcUNxS-1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="-58" y="734" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="-722" y="779" />
+              <mxPoint x="-405" y="879" />
+              <mxPoint x="-405" y="779" />
               <mxPoint x="-58" y="779" />
             </Array>
           </mxGeometry>
@@ -1696,6 +1700,9 @@
         </mxCell>
         <mxCell id="KuDxCaD1VyoS_zhoZlV2-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.005;entryY=0.558;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=#FF0000;" edge="1" parent="1" source="brzqpGbYbhId2Hcb6207-58" target="brzqpGbYbhId2Hcb6207-61">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rG6WbVJPc15LEpDcUNxS-1" value="Προτεραιότητα&lt;div&gt;Περιστατικού&lt;/div&gt;" style="ellipse;shape=umlControl;whiteSpace=wrap;html=1;fontColor=#FF0000;strokeColor=#FF0000;" vertex="1" parent="1">
+          <mxGeometry x="-585" y="825.82" width="94" height="104.37" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
