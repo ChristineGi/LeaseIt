@@ -4,4 +4,8 @@ public class Calendar {
         System.out.println("User appointment scheduled for: " + time);
         return true;
     }
+
+    public void syncUserCalendar(String appointment) {
+        System.out.println("Appointment " + appointment + " synced to user calendar.");
+    }
 }

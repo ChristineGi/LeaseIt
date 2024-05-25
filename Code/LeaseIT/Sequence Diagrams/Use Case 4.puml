@@ -1,11 +1,54 @@
 @startuml
-'https://plantuml.com/sequence-diagram
+actor User
+participant Home
+participant "Vehicle Maintenance" as VM
+participant Vehicle
+participant AI
+participant Cloud
+participant "Maintenance Center" as MC
+participant "Urgent Service" as US
+participant Email
+participant Calendar
 
-autonumber
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+User -> Home : select Vehicle Maintenance
+Home -> VM : showVehicleMaintenance()
+VM -> Vehicle : requestVehicleData()
+Vehicle -> Cloud : getVehicleStatusData()
+Vehicle -> Cloud : getMaintenanceHistory()
+Cloud -> AI : analyzeMaintenanceNeeds()
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+
+User -> VM : select Urgent Maintenance
+VM -> US : displayIssueDescription()
+User -> US : submitIssueDescription()
+US -> AI : analyzeRisk(issueDetails)
+AI -> MC : prioritizeUrgentMaintenance()
+MC --> VM return to select Maintenance Center
+
+alt
+AI --> VM : vehicleStatus(maintenanceNeeds)
+else
+AI --> VM : vehicleStatus(noMaintenanceNeeds)
+AI --> VM : displayStatus(analysisResults)
+User -> VM : select Periodic Checks
+VM -> AI : enableScheduler()
+AI -> Email : sendEmail()
+Email --> VM : return
+end
+
+
+AI --> VM :displayStatus(analysisResults)
+User -> VM : select Maintenance
+VM -> MC : getAuthorizedCenters()
+MC --> VM : displayMaintenanceCenters(centerDetails)
+User -> VM : select Maintenance Center
+VM -> MC : getMaintenanceSchedule()
+MC --> VM : displayMaintenanceSchedule(centerDetails)
+User -> VM : select Maintenance Appointment
+VM -> MC : confirmAppointment(centerDetails)
+MC -> Calendar : syncUserCalendar()
+Calendar -> Email : sendEmail()
+Email --> Home : return
+
 @enduml

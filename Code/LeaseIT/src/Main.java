@@ -22,6 +22,7 @@ public class Main {
         Cloud cloud = new Cloud();
         AI ai = new AI();
         LocationConfiguration locationConfig = new LocationConfiguration(false);
+        MaintenanceCenter maintenanceCenter = new MaintenanceCenter();
 
         // Initialize UI
         VehicleLeasing vehicleLeasing = new VehicleLeasing(database, vehicle, leaseContract, taxGateway, messageService, paymentGateway, emailService);
@@ -45,6 +46,7 @@ public class Main {
         }
 
         VehiclePickup vehiclePickup = new VehiclePickup(database, leaseContract, googleMaps, dealership, calendar, wallet, emailService, userDetails);
+        VehicleMaintenance vehicleMaintenance = new VehicleMaintenance(vehicle, ai, cloud, maintenanceCenter, emailService, calendar, userDetails, leaseContract);
 
         while (true) {
             try {
@@ -54,10 +56,11 @@ public class Main {
                 System.out.println("3. View Leasing Subscriptions");
                 System.out.println("4. Vehicle Pickup");
                 System.out.println("5. Vehicle Tracking");
-                System.out.println("6. Exit");
+                System.out.println("6. Vehicle Maintenance");
+                System.out.println("7. Exit");
                 int choice = scanner.nextInt();
 
-                if (choice == 6) {
+                if (choice == 7) {
                     break;
                 }
 
@@ -129,8 +132,23 @@ public class Main {
                     vehiclePickup.showVehiclePickup();
                 } else if (choice == 5) {
                     vehicleTracking.handleVehicleTracking(userDetails.getUsername(), locationConfig);
+                } else if (choice == 6) {
+                    if (vehicleMaintenance.hasActiveLease()) {
+                        System.out.println("Select an option:");
+                        System.out.println("1. Maintenance Check");
+                        System.out.println("2. Urgent Maintenance");
+                        int maintenanceChoice = scanner.nextInt();
+                        if (maintenanceChoice == 1) {
+                            vehicleMaintenance.performMaintenanceCheck();
+                        } else if (maintenanceChoice == 2) {
+                            vehicleMaintenance.urgentService.displayIssueDescription();
+                            vehicleMaintenance.urgentService.submitIssueDescription();
+                        }
+                    } else {
+                        System.out.println("No active leases found. Cannot perform vehicle maintenance.");
+                    }
                 } else {
-                    System.out.println("Invalid choice. Please select 1, 2, 3, 4, 5, or 6.");
+                    System.out.println("Invalid choice. Please select a valid option.");
                 }
             } catch (Exception e) {
                 System.out.println("Invalid input. Please enter a number.");

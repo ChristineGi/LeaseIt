@@ -38,6 +38,21 @@ public class Vehicle {
                 .collect(Collectors.toSet());
     }
 
+    public void requestVehicleData() {
+        System.out.println("Requesting vehicle data...");
+    }
+
+    public void getVehicleStatusData() throws InterruptedException {
+        System.out.println("Getting vehicle status data from cloud...");
+        Thread.sleep(1000);
+        // Simulate data retrieval
+    }
+
+    public void getMaintenanceHistory() throws InterruptedException {
+        System.out.println("Getting maintenance history from cloud...");
+        Thread.sleep(1000);
+        // Simulate data retrieval
+    }
 
         public List<VehicleDetails> searchVehicles(Database.VehiclePreferences preferences) {
             List<VehicleDetails> filteredVehicles = new ArrayList<>();
