@@ -30,7 +30,7 @@ public class LeaseContract {
         String leaseID = UUID.randomUUID().toString();
         LeasingSubscriptions lease = new LeasingSubscriptions(leaseID, vehicleID, userID, "Pending", false);
         leases.add(lease);
-        System.out.println("Lease added: " + leaseID);
+        System.out.println("\nLease ID : " + leaseID);
     }
 
     public List<LeasingSubscriptions> getLeases() {

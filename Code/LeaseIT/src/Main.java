@@ -7,6 +7,7 @@ public class Main {
     private static String loggedInUsername;
 
     public static void main(String[] args) {
+
         // Initialize services
         Database database = new Database();
         Vehicle vehicle = new Vehicle();
@@ -33,13 +34,13 @@ public class Main {
         Database.UserDetails userDetails = null;
         while (true) {
 
-            System.out.println("\n------- LeaseIT -------\n");
+            System.out.println("\n------- LeaseIT -------");
             System.out.print("Enter your username: ");
 
             loggedInUsername = scanner.nextLine();
             userDetails = database.getUserDetails(loggedInUsername);
             if (userDetails == null) {
-                System.out.println("Username not found. Try again.");
+                System.out.println("\nUsername not found. Try again.");
             } else {
                 vehicleLeasing.setUserDetails(userDetails);
                 System.out.println("\nLogin successful. Welcome, " + loggedInUsername + "!");
@@ -126,11 +127,11 @@ public class Main {
                     if (emails.isEmpty()) {
                         System.out.println("\nYou've got no emails !");
                     } else {
-                        System.out.println("Emails:");
+                        System.out.println("\n**** Emails ****\n");
                         for (int i = 0; i < emails.size(); i++) {
                             System.out.println((i + 1) + ". " + emails.get(i));
                         }
-                        System.out.println("Enter the email number to read, 'd' followed by the email number to delete, or '0' to go back:");
+                        System.out.print("\nEnter the email number to read, or '0' to go back: ");
                         String emailChoice = scanner.next();
                         if (emailChoice.equals("0")) {
                             continue;
@@ -139,7 +140,8 @@ public class Main {
                             emailService.deleteEmail(loggedInUsername, emailIndex);
                         } else {
                             int emailIndex = Integer.parseInt(emailChoice) - 1;
-                            System.out.println("Email: " + emails.get(emailIndex));
+                            System.out.println("\nEmail: " + emails.get(emailIndex));
+                            vehicleLeasing.continueLeasingProcess();
                         }
                     }
                 } else if (choice == 2) {

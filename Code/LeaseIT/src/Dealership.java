@@ -27,35 +27,35 @@ public class Dealership {
 
     public boolean scheduleDealershipAppointment(String time) {
         // Logic to schedule dealership appointment
-        System.out.println("Dealership appointment scheduled for: " + time);
+        System.out.println("\nDealership appointment scheduled for: " + time);
         return true;
     }
 
     public void sendEmail(String details) {
         // Logic to send email to user
-        System.out.println("Email sent with details: " + details);
+        System.out.println("\nEmail sent with details: " + details);
     }
 
     public void monitorPreparation() throws InterruptedException {
-        System.out.println("Monitoring vehicle preparation...");
+        System.out.println("\nMonitoring vehicle preparation...");
         Thread.sleep(3000);
 
     }
 
     public void notifyCompletionEmail() throws InterruptedException {
-        System.out.println("Vehicle preparation completed !");
+        System.out.println("\nVehicle preparation completed !");
         Thread.sleep(1000);
-        System.out.println("Sending notification email...");
+        System.out.println("\nSending notification email...");
         Thread.sleep(1000);
     }
 
     public void reportFailedVerification() throws InterruptedException {
-        System.out.println("Reported failed QR code verification to the dealership.");
+        System.out.println("\nReported failed QR code verification to the dealership.");
         Thread.sleep(1000);
 
     }
 
     public void promptRegenerateCode() {
-        System.out.println("Dealership prompted to regenerate QR code.");
+        System.out.println("\nDealership prompted to regenerate QR code.");
     }
 }

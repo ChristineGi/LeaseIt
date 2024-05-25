@@ -9,14 +9,12 @@ public class QR {
 
     public String generateQRCode() {
         // Logic to generate a QR code
-        String qrCode = "QRCode123456";
-        System.out.println("Generated QR Code: " + qrCode);
-        return qrCode;
+        return "QRCode123456";
     }
 
     public boolean verifyQRCode(String qrCode) {
         // Logic to verify the QR code
-        System.out.println("QR Code verified: " + qrCode);
+        System.out.println("\nQR Code verified: " + qrCode);
         return true;
     }
 

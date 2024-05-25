@@ -9,19 +9,27 @@ public class LocationConfiguration {
         return active;
     }
 
-    public void setBoundaries() {
-        System.out.println("Setting boundaries...");
+    public void setBoundaries() throws InterruptedException {
+        System.out.println("\nSetting boundaries...");
+        Thread.sleep(1000);
+
     }
 
-    public void adjustBoundaries() {
-        System.out.println("Adjusting boundaries...");
+    public void adjustBoundaries() throws InterruptedException {
+        System.out.println("\nAdjusting boundaries...");
+        Thread.sleep(1000);
+
     }
 
-    public void completeRegistration() {
-        System.out.println("Registration complete.");
+    public void completeRegistration() throws InterruptedException {
+        System.out.println("\nRegistration complete.");
+        Thread.sleep(1000);
+
     }
 
-    public void getBoundarySettings() {
-        System.out.println("Getting boundary settings...");
+    public void getBoundarySettings() throws InterruptedException {
+        System.out.println("\nGetting boundary settings...");
+        Thread.sleep(1000);
+
     }
 }

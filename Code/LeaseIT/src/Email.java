@@ -13,7 +13,7 @@ public class Email {
 
     public void sendEmail(String username, String message) {
         userEmails.computeIfAbsent(username, k -> new ArrayList<>()).add(message);
-        System.out.println("Email sent to " + username + " with message: " + message);
+        System.out.println("\nEmail sent to " + username + " with message: \n" + message);
     }
 
     public List<String> getEmails(String username) {

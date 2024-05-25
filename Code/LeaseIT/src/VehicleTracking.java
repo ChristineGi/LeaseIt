@@ -47,30 +47,29 @@ public class VehicleTracking {
     }
 
     public void handleConnectionFailed() throws InterruptedException {
-        cloud.showMessage("Connection Failed. Please try again.");
-        System.out.println("Do you want to retry tracking? (yes/no):");
+        cloud.showConnectionStatus("\nConnection Failed. Please try again.");
+        System.out.print("\nDo you want to retry tracking? (yes/no): ");
         Scanner scanner = new Scanner(System.in);
         String retry = scanner.nextLine();
 
         if (retry.equalsIgnoreCase("yes")) {
-            System.out.println("Attempting reconnection...");
+            System.out.println("\nAttempting reconnection...");
             connectToCloud();
         } else {
-            System.out.println("Tracking aborted.");
+            System.out.println("\nTracking aborted.");
         }
     }
 
     public void handleVehicleTracking(String userID, LocationConfiguration locationConfig) throws InterruptedException {
         if (leaseContract.checkActiveLease(userID)) {
-            System.out.println("Vehicle Tracking Screen");
+            System.out.println("\n------- Vehicle Tracking Screen -------");
             String leaseID = leaseContract.getUserLeasesByStatus(userID, "Active").get(0).getLeaseID();
 
             if (leaseContract.isLocationConfigured(leaseID)) {
-                System.out.println("Location configuration is active.");
+                System.out.println("\nLocation configuration is active.");
             } else {
-                System.out.println("Location configuration is inactive. Adding location services...");
+                System.out.println("\nLocation configuration is inactive. Adding location services...");
                 locationConfig.setBoundaries();
-                System.out.println("Adjust boundaries...");
                 locationConfig.adjustBoundaries();
                 locationConfig.completeRegistration();
                 leaseContract.setLocationConfigurationStatus(leaseID, true);
@@ -80,7 +79,7 @@ public class VehicleTracking {
             }
 
             requestLocationPermission();
-            System.out.println("Grant location permission? (yes/no):");
+            System.out.print("Grant location permission? (yes/no): ");
             Scanner scanner = new Scanner(System.in);
             String grantPermission = scanner.nextLine();
 
@@ -94,18 +93,18 @@ public class VehicleTracking {
                 googleMaps.locateParkingAndFuel();
                 displayData();
 
-                System.out.println("Select Smart Navigation? (yes/no):");
+                System.out.print("\nSelect Smart Navigation? (yes/no): ");
                 String selectNavigation = scanner.nextLine();
                 if (selectNavigation.equalsIgnoreCase("yes")) {
                     startNavigation();
                     updateLocation();
                     completeNavigation();
                     displayData();
-                    System.out.println("Vehicle tracking process completed successfully.");
+                    System.out.println("\nVehicle tracking process completed successfully.");
                 }
             }
         } else {
-            System.out.println("No active lease found for user: " + userID);
+            System.out.println("\nNo active lease found for user: " + userID);
         }
     }
 }

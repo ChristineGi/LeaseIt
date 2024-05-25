@@ -90,17 +90,19 @@ public class VehicleLeasing {
                 System.out.println("\nCheck Creditworthiness: Approved");
                 Thread.sleep(1000); // Simulate loading
 
-                System.out.println("\n------------ Displaying Leasing Terms ------------");
-                System.out.println("Monthly Payment: " + calculatedTerms.getMonthlyPayment());
-                System.out.println("Lease Term: " + calculatedTerms.getLeaseTerm() + " months");
+                System.out.println("\n----------  Leasing Terms ----------");
+                System.out.printf("Monthly Payment: %.2f $", calculatedTerms.getMonthlyPayment());
+                System.out.println("\nLease Term: " + calculatedTerms.getLeaseTerm() + " months");
                 System.out.println("Mileage Limit: " + calculatedTerms.getMileageLimit() + " miles");
+                System.out.println("------------------------------------");
+
 
                 // Prompt user for approval
                 Scanner scanner = new Scanner(System.in);
-                System.out.print("Do you approve the leasing terms? (yes/no): ");
+                System.out.print("\nDo you approve the leasing terms? (yes/no): ");
                 String approval = scanner.nextLine();
                 if (!approval.equalsIgnoreCase("yes")) {
-                    System.out.println("Leasing process aborted by user.");
+                    System.out.println("\nLeasing process aborted by user.");
                     return;
                 }
 
@@ -131,7 +133,7 @@ public class VehicleLeasing {
     public void proceedToPayment(PaymentGateway.PaymentDetails paymentDetails) throws InterruptedException {
         PaymentGateway.PaymentConfirmation confirmation = paymentGateway.computePayment(paymentDetails);
         if (confirmation != null) {
-            messageService.displayMessage("Payment Successful! \nTransaction ID: " + confirmation.getTransactionId());
+            messageService.displayMessage("Successful Payment. \n\nTransaction ID: " + confirmation.getTransactionId());
             vehicle.leaseVehicle(userDetails.getSelectedVehicleId());
             leaseContract.addLease(userDetails.getSelectedVehicleId(), userDetails.getUsername());
         }
@@ -143,13 +145,13 @@ public class VehicleLeasing {
         settings.setPreferences(currentPreferences);
         database.saveSessionSettings(settings);
         emailService.sendEmail(userDetails.getUsername(), "Session Abandoned: " + settings);
-        System.out.println("Leasing process abandoned.");
+        System.out.println("\nLeasing process abandoned.");
     }
 
     public void continueLeasingProcess() {
         Database.SessionSettings settings = database.retrieveSessionSettings();
         if (settings != null) {
-            System.out.println("Continuing your previous session...");
+            System.out.println("\nContinuing your previous session...");
             userDetails.setSelectedVehicleId(settings.getSelectedVehicleId());
             currentPreferences = settings.getPreferences();
             submitPreferences(currentPreferences);
@@ -163,7 +165,7 @@ public class VehicleLeasing {
         if (leasedVehicles.isEmpty()) {
             System.out.println("\nYou have no active leasing subscriptions.");
         } else {
-            System.out.println("Your Leasing Subscriptions:");
+            System.out.println("\nYour Leasing Subscriptions:\n");
             for (Vehicle.VehicleDetails details : leasedVehicles) {
                 System.out.println("ID: " + details.getVehicleId() + ", Type: " + details.getType() + ", Make: " + details.getMake()
                         + ", Model: " + details.getModel() + ", Year: " + details.getYear() + ", Price: " + details.getPrice() + ", Status: " + details.getStatus());
@@ -173,7 +175,7 @@ public class VehicleLeasing {
         if (pendingLeases.isEmpty()) {
             System.out.println("\nYou have no pending vehicle pickups.");
         } else {
-            System.out.println("Your Pending Vehicle Pickups:");
+            System.out.println("\nYour Pending Vehicle Pickups:\n");
             for (LeaseContract.LeasingSubscriptions lease : pendingLeases) {
                 System.out.println("Lease ID: " + lease.getLeaseID() + ", Vehicle ID: " + lease.getVehicleID() + ", Status: " + lease.getStatus());
             }

@@ -16,19 +16,19 @@ public class Cloud {
     public boolean connect() {
         if (random.nextBoolean()) { // Simulate a 50% chance of failure
             if (locationConfigured) {
-                System.out.println("Connected to cloud.");
+                System.out.println("\nConnected to cloud.");
                 return true;
             } else {
-                System.out.println("No Location Configured.");
+                System.out.println("\nNo Location Configured.");
                 return false;
             }
         } else {
-            System.out.println("Connection Failed.");
+            System.out.println("\nConnection Failed.");
             return false;
         }
     }
 
-    public void showMessage(String message) {
+    public void showConnectionStatus(String message) {
         System.out.println(message);
     }
 }
