@@ -25,7 +25,7 @@ public class VehiclePickup {
     }
 
     public void showVehiclePickup() throws InterruptedException {
-        List<LeaseContract.Leasing> pendingLeases = leaseContract.getUserLeasesByStatus(userDetails.getUsername(), "Pending");
+        List<LeaseContract.LeasingSubscriptions> pendingLeases = leaseContract.getUserLeasesByStatus(userDetails.getUsername(), "Pending");
         if (pendingLeases.isEmpty()) {
             System.out.println("No pending leases available.");
             return;
@@ -34,7 +34,7 @@ public class VehiclePickup {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Pending Leases:");
         for (int i = 0; i < pendingLeases.size(); i++) {
-            LeaseContract.Leasing lease = pendingLeases.get(i);
+            LeaseContract.LeasingSubscriptions lease = pendingLeases.get(i);
             System.out.println((i + 1) + ". Lease ID: " + lease.getLeaseID() + ", Vehicle ID: " + lease.getVehicleID() + ", Status: " + lease.getStatus());
         }
 
@@ -47,7 +47,7 @@ public class VehiclePickup {
             return;
         }
 
-        LeaseContract.Leasing selectedLease = pendingLeases.get(leaseChoice - 1);
+        LeaseContract.LeasingSubscriptions selectedLease = pendingLeases.get(leaseChoice - 1);
         googleMaps.syncLocation();
 
         List<String> dealerships = dealership.retrieveDealerships();
@@ -125,7 +125,7 @@ public class VehiclePickup {
         System.out.println("Your vehicle is being prepared. A notification email will be sent when ready.");
     }
 
-    private void handleBrokenQRCode(LeaseContract.Leasing selectedLease) throws InterruptedException {
+    private void handleBrokenQRCode(LeaseContract.LeasingSubscriptions selectedLease) throws InterruptedException {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("QR Code verification failed. Report failed verification to dealership? (yes/no):");

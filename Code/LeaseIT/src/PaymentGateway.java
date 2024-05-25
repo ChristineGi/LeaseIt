@@ -4,7 +4,7 @@ public class PaymentGateway {
 
     public PaymentConfirmation computePayment(PaymentGateway.PaymentDetails details) {
         try {
-            System.out.println("Processing payment...");
+            System.out.println("\nProcessing payment...");
             Thread.sleep(2000);
 
             // Generate a unique transaction ID
@@ -12,7 +12,7 @@ public class PaymentGateway {
 
             PaymentConfirmation confirmation = new PaymentConfirmation(transactionId);
             Thread.sleep(2000);
-            System.out.println("Payment successful! Transaction ID: " + confirmation.getTransactionId());
+            //System.out.println("\nPayment successful! Transaction ID: " + confirmation.getTransactionId());
 
             return confirmation;
         } catch (InterruptedException e) {

@@ -26,13 +26,13 @@ public class VehicleMaintenance {
     }
 
     public boolean hasActiveLease() {
-        List<LeaseContract.Leasing> activeLeases = leaseContract.getUserLeasesByStatus(userDetails.getUsername(), "Active");
+        List<LeaseContract.LeasingSubscriptions> activeLeases = leaseContract.getUserLeasesByStatus(userDetails.getUsername(), "Active");
         return !activeLeases.isEmpty();
     }
 
     public void performMaintenanceCheck() throws InterruptedException {
-        List<LeaseContract.Leasing> activeLeases = leaseContract.getUserLeasesByStatus(userDetails.getUsername(), "Active");
-        LeaseContract.Leasing activeLease = activeLeases.get(0); // Assuming the user has one active lease
+        List<LeaseContract.LeasingSubscriptions> activeLeases = leaseContract.getUserLeasesByStatus(userDetails.getUsername(), "Active");
+        LeaseContract.LeasingSubscriptions activeLease = activeLeases.get(0); // Assuming the user has one active lease
         Vehicle.VehicleDetails vehicleDetails = vehicle.fetchVehicleDetails(activeLease.getVehicleID());
 
         if (vehicleDetails == null) {
@@ -40,8 +40,11 @@ public class VehicleMaintenance {
             return;
         }
 
+        System.out.println("Requesting vehicle data...");
         vehicle.requestVehicleData();
+        System.out.println("Getting vehicle status data from cloud...");
         vehicle.getVehicleStatusData();
+        System.out.println("Getting maintenance history from cloud...");
         vehicle.getMaintenanceHistory();
         ai.analyzeMaintenanceNeeds();
 
@@ -125,31 +128,18 @@ public class VehicleMaintenance {
     }
 
     public class UrgentService {
+        public void requestUrgentService() {
+            System.out.println("Requesting urgent service...");
+        }
+
+        public void confirmUrgentService() {
+            System.out.println("Urgent service confirmed.");
+        }
+
         public void displayIssueDescription() {
-            System.out.println("Please describe the issue you are experiencing with your vehicle:");
         }
 
         public void submitIssueDescription() {
-            Scanner scanner = new Scanner(System.in);
-            String issueDescription = scanner.nextLine();
-            System.out.println("Issue submitted: " + issueDescription);
-            analyzeRisk(issueDescription);
-        }
-
-        private void analyzeRisk(String issueDescription) {
-            System.out.println("Analyzing risk of the issue...");
-            ai.analyzeRisk(issueDescription);
-            prioritizeUrgentMaintenance();
-        }
-
-        private void prioritizeUrgentMaintenance() {
-            System.out.println("Prioritizing urgent maintenance...");
-            maintenanceCenter.prioritizeUrgentMaintenance();
-            try {
-                selectMaintenance();
-            } catch (InterruptedException e) {
-                System.out.println("Error while scheduling maintenance: " + e.getMessage());
-            }
         }
     }
 }

@@ -4,7 +4,7 @@ import java.util.UUID;
 
 public class LeaseContract {
 
-    private List<Leasing> leases;
+    private List<LeasingSubscriptions> leases;
 
     public LeaseContract() {
         leases = new ArrayList<>();
@@ -28,18 +28,18 @@ public class LeaseContract {
 
     public void addLease(String vehicleID, String userID) {
         String leaseID = UUID.randomUUID().toString();
-        Leasing lease = new Leasing(leaseID, vehicleID, userID, "Pending", false);
+        LeasingSubscriptions lease = new LeasingSubscriptions(leaseID, vehicleID, userID, "Pending", false);
         leases.add(lease);
         System.out.println("Lease added: " + leaseID);
     }
 
-    public List<Leasing> getLeases() {
+    public List<LeasingSubscriptions> getLeases() {
         return leases;
     }
 
-    public List<Leasing> getUserLeases(String userID) {
-        List<Leasing> userLeases = new ArrayList<>();
-        for (Leasing lease : leases) {
+    public List<LeasingSubscriptions> getUserLeases(String userID) {
+        List<LeasingSubscriptions> userLeases = new ArrayList<>();
+        for (LeasingSubscriptions lease : leases) {
             if (lease.getUserID().equals(userID)) {
                 userLeases.add(lease);
             }
@@ -47,9 +47,9 @@ public class LeaseContract {
         return userLeases;
     }
 
-    public List<Leasing> getUserLeasesByStatus(String userID, String status) {
-        List<Leasing> userLeases = new ArrayList<>();
-        for (Leasing lease : leases) {
+    public List<LeasingSubscriptions> getUserLeasesByStatus(String userID, String status) {
+        List<LeasingSubscriptions> userLeases = new ArrayList<>();
+        for (LeasingSubscriptions lease : leases) {
             if (lease.getUserID().equals(userID) && lease.getStatus().equals(status)) {
                 userLeases.add(lease);
             }
@@ -58,7 +58,7 @@ public class LeaseContract {
     }
 
     public boolean checkActiveLease(String userID) {
-        for (Leasing lease : leases) {
+        for (LeasingSubscriptions lease : leases) {
             if (lease.getUserID().equals(userID) && lease.getStatus().equals("Active")) {
                 return true;
             }
@@ -67,7 +67,7 @@ public class LeaseContract {
     }
 
     public Vehicle.VehicleDetails getVehicleInfo(String leaseID) {
-        for (Leasing lease : leases) {
+        for (LeasingSubscriptions lease : leases) {
             if (lease.getLeaseID().equals(leaseID)) {
                 return new Vehicle().fetchVehicleDetails(lease.getVehicleID());
             }
@@ -76,7 +76,7 @@ public class LeaseContract {
     }
 
     public void setLocationConfigurationStatus(String leaseID, boolean status) {
-        for (Leasing lease : leases) {
+        for (LeasingSubscriptions lease : leases) {
             if (lease.getLeaseID().equals(leaseID)) {
                 lease.setLocationConfigured(status);
                 break;
@@ -85,7 +85,7 @@ public class LeaseContract {
     }
 
     public boolean isLocationConfigured(String leaseID) {
-        for (Leasing lease : leases) {
+        for (LeasingSubscriptions lease : leases) {
             if (lease.getLeaseID().equals(leaseID)) {
                 return lease.isLocationConfigured();
             }
@@ -129,14 +129,14 @@ public class LeaseContract {
         }
     }
 
-    public static class Leasing {
+    public static class LeasingSubscriptions {
         private String leaseID;
         private String vehicleID;
         private String userID;
         private String status;
         private boolean locationConfigured;
 
-        public Leasing(String leaseID, String vehicleID, String userID, String status, boolean locationConfigured) {
+        public LeasingSubscriptions(String leaseID, String vehicleID, String userID, String status, boolean locationConfigured) {
             this.leaseID = leaseID;
             this.vehicleID = vehicleID;
             this.userID = userID;

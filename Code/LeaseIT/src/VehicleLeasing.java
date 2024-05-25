@@ -30,7 +30,7 @@ public class VehicleLeasing {
     }
 
     public void showLeasingVehicleScreen() {
-        System.out.println("Vehicle Leasing Screen");
+        System.out.println("\n------ Vehicle Leasing Screen ------");
         List<Database.VehiclePreferences> preferences = database.getVehiclePreferences();
         // Display preferences to user
     }
@@ -39,57 +39,77 @@ public class VehicleLeasing {
         this.currentPreferences = preferences;
         List<Vehicle.VehicleDetails> vehicles = vehicle.searchVehicles(preferences);
         if (vehicles.isEmpty()) {
-            System.out.println("No vehicles available with the specified preferences.");
+            System.out.println("\nNo vehicles available with the specified preferences.");
             return false;
         }
-        System.out.println("Available Vehicles:");
+        System.out.println("\n--------------------------- Available Vehicles ---------------------------");
         for (Vehicle.VehicleDetails v : vehicles) {
             System.out.println("ID: " + v.getVehicleId() + ", Type: " + v.getType() + ", Make: " + v.getMake() + ", Model: " + v.getModel() + ", Price: " + v.getPrice() + ", Leased: " + (v.isLeased() ? "Yes" : "No"));
         }
         return true;
     }
 
+    public boolean isValidVehicleSelection(String vehicleId, Database.VehiclePreferences preferences) {
+        List<Vehicle.VehicleDetails> vehicles = vehicle.searchVehicles(preferences);
+        for (Vehicle.VehicleDetails v : vehicles) {
+            if (v.getVehicleId().equals(vehicleId)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void selectVehicle(String vehicleId) {
         Vehicle.VehicleDetails details = vehicle.fetchVehicleDetails(vehicleId);
         if (details != null) {
-            System.out.println("Selected Vehicle Details:");
+            System.out.println("\n----------------------------- Selected Vehicle Details -----------------------------");
             System.out.println("ID: " + details.getVehicleId() + ", Type: " + details.getType() + ", Make: " + details.getMake() + ", Model: " + details.getModel() + ", Year: " + details.getYear() + ", Price: " + details.getPrice() + ", Leased: " + (details.isLeased() ? "Yes" : "No"));
+            System.out.println("------------------------------------------------------------------------------------");
+
             userDetails.setSelectedVehicleId(vehicleId); // Set the selected vehicle ID
+
         } else {
-            System.out.println("Vehicle not found.");
+            System.out.println("\nVehicle not found.");
         }
     }
 
     public void confirmLeasingTerms(Database.UserDetails userDetails) {
         try {
-            System.out.println("System connects to Tax Gateway...");
+            System.out.println("\nSystem connects to Tax Gateway...");
             Thread.sleep(1000); // Simulate loading
-            System.out.println("Fetching Data...");
+            System.out.println("\nFetching Data...");
             Thread.sleep(1000); // Simulate loading
 
-            System.out.println("Calculating Leasing Terms...");
+            System.out.println("\nCalculating Leasing Terms...");
             Thread.sleep(1000); // Simulate loading
             Vehicle.VehicleDetails selectedVehicleDetails = vehicle.fetchVehicleDetails(userDetails.getSelectedVehicleId());
             LeaseContract.LeasingTerms calculatedTerms = leaseContract.calculateLeasingTerms(selectedVehicleDetails);
 
             boolean isCreditWorthy = taxGateway.checkCreditworthiness(userDetails, calculatedTerms);
             if (isCreditWorthy) {
-                System.out.println("Check Creditworthiness: Approved");
+                System.out.println("\nCheck Creditworthiness: Approved");
                 Thread.sleep(1000); // Simulate loading
 
-                System.out.println("Displaying Leasing Terms:");
+                System.out.println("\n------------ Displaying Leasing Terms ------------");
                 System.out.println("Monthly Payment: " + calculatedTerms.getMonthlyPayment());
                 System.out.println("Lease Term: " + calculatedTerms.getLeaseTerm() + " months");
                 System.out.println("Mileage Limit: " + calculatedTerms.getMileageLimit() + " miles");
-                System.out.println("Leasing terms accepted. Proceeding to payment...");
+
+                // Prompt user for approval
+                Scanner scanner = new Scanner(System.in);
+                System.out.print("Do you approve the leasing terms? (yes/no): ");
+                String approval = scanner.nextLine();
+                if (!approval.equalsIgnoreCase("yes")) {
+                    System.out.println("Leasing process aborted by user.");
+                    return;
+                }
 
                 LeaseContract.LeasingTerms finalTerms = leaseContract.requestLeasingTerms(calculatedTerms);
-                messageService.displayApprovalMessage("Approved");
-                leaseContract.finalizeLeaseContract();
+                messageService.displayApprovalMessage("Approved!");
+                //leaseContract.finalizeLeaseContract();
 
                 // Prompt user to proceed to payment
-                Scanner scanner = new Scanner(System.in);
-                System.out.println("Proceed to Payment? (yes/no):");
+                System.out.print("\nProceed to Payment? (yes/no): ");
                 String pay = scanner.nextLine();
                 if (pay.equalsIgnoreCase("yes")) {
                     PaymentGateway.PaymentDetails paymentDetails = new PaymentGateway.PaymentDetails();
@@ -98,20 +118,20 @@ public class VehicleLeasing {
                     abandonLeasingProcess();
                 }
             } else {
-                System.out.println("Check Creditworthiness: Rejected");
+                System.out.println("\nCheck Creditworthiness: Rejected");
                 Thread.sleep(1000); // Simulate loading
-                messageService.displayRejectionMessage("Rejected");
-                System.out.println("Creditworthiness check failed. Please revise your application.");
+                messageService.displayRejectionMessage("\nRejected");
+                System.out.println("\nCreditworthiness check failed. Please revise your application.");
             }
         } catch (InterruptedException e) {
-            System.out.println("An error occurred: " + e.getMessage());
+            System.out.println("\nAn error occurred: " + e.getMessage());
         }
     }
 
     public void proceedToPayment(PaymentGateway.PaymentDetails paymentDetails) throws InterruptedException {
         PaymentGateway.PaymentConfirmation confirmation = paymentGateway.computePayment(paymentDetails);
         if (confirmation != null) {
-            messageService.displayMessage("Payment Successful: " + confirmation.getTransactionId());
+            messageService.displayMessage("Payment Successful! \nTransaction ID: " + confirmation.getTransactionId());
             vehicle.leaseVehicle(userDetails.getSelectedVehicleId());
             leaseContract.addLease(userDetails.getSelectedVehicleId(), userDetails.getUsername());
         }
@@ -141,7 +161,7 @@ public class VehicleLeasing {
     public void viewLeasingSubscriptions() {
         List<Vehicle.VehicleDetails> leasedVehicles = vehicle.getLeasedVehicles();
         if (leasedVehicles.isEmpty()) {
-            System.out.println("You have no active leasing subscriptions.");
+            System.out.println("\nYou have no active leasing subscriptions.");
         } else {
             System.out.println("Your Leasing Subscriptions:");
             for (Vehicle.VehicleDetails details : leasedVehicles) {
@@ -149,12 +169,12 @@ public class VehicleLeasing {
                         + ", Model: " + details.getModel() + ", Year: " + details.getYear() + ", Price: " + details.getPrice() + ", Status: " + details.getStatus());
             }
         }
-        List<LeaseContract.Leasing> pendingLeases = leaseContract.getUserLeasesByStatus(userDetails.getUsername(), "Pending");
+        List<LeaseContract.LeasingSubscriptions> pendingLeases = leaseContract.getUserLeasesByStatus(userDetails.getUsername(), "Pending");
         if (pendingLeases.isEmpty()) {
-            System.out.println("You have no pending vehicle pickups.");
+            System.out.println("\nYou have no pending vehicle pickups.");
         } else {
             System.out.println("Your Pending Vehicle Pickups:");
-            for (LeaseContract.Leasing lease : pendingLeases) {
+            for (LeaseContract.LeasingSubscriptions lease : pendingLeases) {
                 System.out.println("Lease ID: " + lease.getLeaseID() + ", Vehicle ID: " + lease.getVehicleID() + ", Status: " + lease.getStatus());
             }
         }

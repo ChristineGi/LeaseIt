@@ -32,15 +32,17 @@ public class Main {
         // Login system
         Database.UserDetails userDetails = null;
         while (true) {
-            System.out.println("Login Screen");
-            System.out.println("Enter your username:");
+
+            System.out.println("\n------- LeaseIT -------\n");
+            System.out.print("Enter your username: ");
+
             loggedInUsername = scanner.nextLine();
             userDetails = database.getUserDetails(loggedInUsername);
             if (userDetails == null) {
                 System.out.println("Username not found. Try again.");
             } else {
                 vehicleLeasing.setUserDetails(userDetails);
-                System.out.println("Login successful. Welcome, " + loggedInUsername + "!");
+                System.out.println("\nLogin successful. Welcome, " + loggedInUsername + "!");
                 break;
             }
         }
@@ -50,14 +52,20 @@ public class Main {
 
         while (true) {
             try {
-                System.out.println("Home Screen");
+                System.out.println("\n------- Home Screen -------");
                 System.out.println("1. Vehicle Leasing");
-                System.out.println("2. View Emails");
-                System.out.println("3. View Leasing Subscriptions");
-                System.out.println("4. Vehicle Pickup");
-                System.out.println("5. Vehicle Tracking");
-                System.out.println("6. Vehicle Maintenance");
+                System.out.println("2. Vehicle Pickup");
+                System.out.println("3. Vehicle Tracking");
+                System.out.println("4. Vehicle Maintenance");
+                System.out.println("---------------------------\n");
+
+                System.out.println("------- Supportive Features -------");
+                System.out.println("5. View Leasing Subscriptions");
+                System.out.println("6. View Emails");
                 System.out.println("7. Exit");
+                System.out.println("-----------------------------------\n");
+
+                System.out.print("Select: ");
                 int choice = scanner.nextInt();
 
                 if (choice == 7) {
@@ -69,20 +77,20 @@ public class Main {
 
                     try {
                         // Entering leasing preferences
-                        System.out.println("Enter your preferences:");
+                        System.out.println("\nEnter your preferences: ");
 
                         // Display distinct vehicle types
                         Set<String> vehicleTypes = vehicle.getVehicleTypes();
-                        System.out.println("Vehicle Type (select from options): " + vehicleTypes);
+                        System.out.print("\nVehicle Type\n" + vehicleTypes + "\nSelect from Options: ");
                         scanner.nextLine();  // Consume newline
                         String vehicleType = scanner.nextLine();
 
                         // Display distinct vehicle brands
                         Set<String> vehicleBrands = vehicle.getVehicleBrands();
-                        System.out.println("Preferred Brands (select from options): " + vehicleBrands);
+                        System.out.print("\nPreferred Brands\n" + vehicleBrands + "\nSelect from Options: ");
                         String preferredBrands = scanner.nextLine();
 
-                        System.out.println("Budget:");
+                        System.out.print("\nBudget Price: ");
                         int budget = scanner.nextInt();
                         scanner.nextLine(); // Consume newline
 
@@ -93,22 +101,30 @@ public class Main {
                         }
 
                         // Selecting a vehicle
-                        System.out.println("Select a vehicle (Enter vehicle ID):");
-                        String vehicleId = scanner.nextLine();
+                        String vehicleId;
+                        while (true) {
+                            System.out.print("\nSelect a vehicle (Enter vehicle ID): ");
+                            vehicleId = scanner.nextLine();
+                            if (vehicleLeasing.isValidVehicleSelection(vehicleId, preferences)) {
+                                break;
+                            } else {
+                                System.out.println("\nInvalid vehicle ID. Please select a valid vehicle ID from the list.");
+                            }
+                        }
                         vehicleLeasing.selectVehicle(vehicleId);
 
                         // Set the selected vehicle ID in userDetails
                         userDetails.setSelectedVehicleId(vehicleId);
                         vehicleLeasing.confirmLeasingTerms(userDetails);
 
-                        System.out.println("Returning to Home Screen...");
+                        System.out.println("\nReturning to Home Screen...");
                     } catch (Exception e) {
                         System.out.println("An error occurred: " + e.getMessage());
                     }
-                } else if (choice == 2) {
+                } else if (choice == 6) {
                     List<String> emails = emailService.getEmails(loggedInUsername);
                     if (emails.isEmpty()) {
-                        System.out.println("You've got no emails.");
+                        System.out.println("\nYou've got no emails !");
                     } else {
                         System.out.println("Emails:");
                         for (int i = 0; i < emails.size(); i++) {
@@ -126,13 +142,11 @@ public class Main {
                             System.out.println("Email: " + emails.get(emailIndex));
                         }
                     }
-                } else if (choice == 3) {
-                    vehicleLeasing.viewLeasingSubscriptions();
-                } else if (choice == 4) {
+                } else if (choice == 2) {
                     vehiclePickup.showVehiclePickup();
-                } else if (choice == 5) {
+                } else if (choice == 3) {
                     vehicleTracking.handleVehicleTracking(userDetails.getUsername(), locationConfig);
-                } else if (choice == 6) {
+                } else if (choice == 4) {
                     if (vehicleMaintenance.hasActiveLease()) {
                         System.out.println("Select an option:");
                         System.out.println("1. Maintenance Check");
@@ -147,7 +161,11 @@ public class Main {
                     } else {
                         System.out.println("No active leases found. Cannot perform vehicle maintenance.");
                     }
-                } else {
+                }
+                else if (choice == 5) {
+                    vehicleLeasing.viewLeasingSubscriptions();
+                }
+                else {
                     System.out.println("Invalid choice. Please select a valid option.");
                 }
             } catch (Exception e) {

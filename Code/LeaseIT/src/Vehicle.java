@@ -9,21 +9,21 @@ public class Vehicle {
 
     public Vehicle() {
         vehicleDetailsList = new ArrayList<>();
-        vehicleDetailsList.add(new VehicleDetails("V1234", "Sedan", "Toyota", "Camry", 2021, 15000,false,"Dealership 1", "Available"));
-        vehicleDetailsList.add(new VehicleDetails("V5678", "SUV", "Honda", "CR-V", 2022, 20000,false,"Dealership 1", "UponRequest"));
-        vehicleDetailsList.add(new VehicleDetails("V9101", "Sedan", "Honda", "Accord", 2021, 18000,false,"Dealership 1", "Available"));
-        vehicleDetailsList.add(new VehicleDetails("V1121", "SUV", "Toyota", "RAV4", 2022, 25000,false,"Dealership 1", "Available"));
-        vehicleDetailsList.add(new VehicleDetails("V3141", "Truck", "Ford", "F-150", 2021, 30000,false,"Dealership 1", "UponRequest"));
-        vehicleDetailsList.add(new VehicleDetails("V5161", "Sedan", "Chevrolet", "Malibu", 2022, 17000,false,"Dealership 1", "Available"));
-        vehicleDetailsList.add(new VehicleDetails("V7181", "SUV", "Chevrolet", "Tahoe", 2022, 35000,false,"Dealership 2", "UponRequest"));
-        vehicleDetailsList.add(new VehicleDetails("V9202", "Sedan", "Nissan", "Altima", 2021, 16000,false,"Dealership 2", "Available"));
-        vehicleDetailsList.add(new VehicleDetails("V1122", "SUV", "Nissan", "Rogue", 2022, 22000,false,"Dealership 2", "Available"));
-        vehicleDetailsList.add(new VehicleDetails("V3142", "Truck", "Ram", "1500", 2021, 32000,false,"Dealership 2", "Available"));
-        vehicleDetailsList.add(new VehicleDetails("V5162", "Sedan", "Hyundai", "Elantra", 2022, 14000,false,"Dealership 2", "Available"));
-        vehicleDetailsList.add(new VehicleDetails("V7182", "SUV", "Hyundai", "Tucson", 2022, 21000,false,"Dealership 2", "Available"));
-        vehicleDetailsList.add(new VehicleDetails("V9203", "Sedan", "Kia", "Optima", 2021, 15500,false,"Dealership 2", "UponRequest"));
-        vehicleDetailsList.add(new VehicleDetails("V1123", "SUV", "Kia", "Sorento", 2022, 23000,false,"Dealership 2", "Available"));
-        vehicleDetailsList.add(new VehicleDetails("V3143", "Truck", "GMC", "Sierra", 2021, 31000,false,"Dealership 2", "Available"));
+        vehicleDetailsList.add(new VehicleDetails("1", "Sedan", "Toyota", "Camry", 2021, 15000,false,"Dealership 1", "Available"));
+        vehicleDetailsList.add(new VehicleDetails("2", "SUV", "Honda", "CR-V", 2022, 20000,false,"Dealership 1", "UponRequest"));
+        vehicleDetailsList.add(new VehicleDetails("3", "Sedan", "Honda", "Accord", 2021, 18000,false,"Dealership 1", "Available"));
+        vehicleDetailsList.add(new VehicleDetails("4", "SUV", "Toyota", "RAV4", 2022, 25000,false,"Dealership 1", "Available"));
+        vehicleDetailsList.add(new VehicleDetails("5", "Truck", "Ford", "F-150", 2021, 30000,false,"Dealership 1", "UponRequest"));
+        vehicleDetailsList.add(new VehicleDetails("6", "Sedan", "Chevrolet", "Malibu", 2022, 17000,false,"Dealership 1", "Available"));
+        vehicleDetailsList.add(new VehicleDetails("7", "SUV", "Chevrolet", "Tahoe", 2022, 35000,false,"Dealership 2", "UponRequest"));
+        vehicleDetailsList.add(new VehicleDetails("8", "Sedan", "Nissan", "Altima", 2021, 16000,false,"Dealership 2", "Available"));
+        vehicleDetailsList.add(new VehicleDetails("9", "SUV", "Nissan", "Rogue", 2022, 22000,false,"Dealership 2", "Available"));
+        vehicleDetailsList.add(new VehicleDetails("10", "Truck", "Ram", "1500", 2021, 32000,false,"Dealership 2", "Available"));
+        vehicleDetailsList.add(new VehicleDetails("11", "Sedan", "Hyundai", "Elantra", 2022, 14000,false,"Dealership 2", "Available"));
+        vehicleDetailsList.add(new VehicleDetails("12", "SUV", "Hyundai", "Tucson", 2022, 21000,false,"Dealership 2", "Available"));
+        vehicleDetailsList.add(new VehicleDetails("13", "Sedan", "Kia", "Optima", 2021, 15500,false,"Dealership 2", "UponRequest"));
+        vehicleDetailsList.add(new VehicleDetails("14", "SUV", "Kia", "Sorento", 2022, 23000,false,"Dealership 2", "Available"));
+        vehicleDetailsList.add(new VehicleDetails("15", "Truck", "GMC", "Sierra", 2021, 31000,false,"Dealership 2", "Available"));
     }
 
     public Set<String> getVehicleTypes() {
