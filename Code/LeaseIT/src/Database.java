@@ -20,7 +20,7 @@ public class Database {
 
         // Add user mock data
         userDetailsList.add(new UserDetails("user", 700, 60000)); // username, credit score, income
-        userDetailsList.add(new UserDetails("user2", 650, 50000));
+        userDetailsList.add(new UserDetails("user2", 649, 50000));
         userDetailsList.add(new UserDetails("user3", 600, 40000));
 
         // Add emails mock data
