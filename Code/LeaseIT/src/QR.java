@@ -1,4 +1,5 @@
 public class QR {
+
     private Email emailService;
     private Database.UserDetails userDetails;
 

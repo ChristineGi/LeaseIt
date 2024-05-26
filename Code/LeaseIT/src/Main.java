@@ -74,6 +74,7 @@ public class Main {
                 }
 
                 if (choice == 1) {
+
                     vehicleLeasing.showLeasingVehicleScreen();
 
                     try {

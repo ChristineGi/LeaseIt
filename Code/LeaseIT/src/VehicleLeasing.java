@@ -13,6 +13,7 @@ public class VehicleLeasing {
     private Database.UserDetails userDetails;
     private Database.VehiclePreferences currentPreferences;
 
+
     public VehicleLeasing(Database database, Vehicle vehicle, LeaseContract leaseContract, TaxGateway taxGateway, Message messageService, PaymentGateway paymentGateway, Email emailService) {
         this.database = database;
         this.vehicle = vehicle;
@@ -23,10 +24,6 @@ public class VehicleLeasing {
         this.emailService = emailService;
         this.userDetails = null;
         this.currentPreferences = null;
-    }
-
-    public void setUserDetails(Database.UserDetails userDetails) {
-        this.userDetails = userDetails;
     }
 
     public void showLeasingVehicleScreen() {
@@ -49,16 +46,6 @@ public class VehicleLeasing {
         return true;
     }
 
-    public boolean isValidVehicleSelection(String vehicleId, Database.VehiclePreferences preferences) {
-        List<Vehicle.VehicleDetails> vehicles = vehicle.searchVehicles(preferences);
-        for (Vehicle.VehicleDetails v : vehicles) {
-            if (v.getVehicleId().equals(vehicleId)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public void selectVehicle(String vehicleId) {
         Vehicle.VehicleDetails details = vehicle.fetchVehicleDetails(vehicleId);
         if (details != null) {
@@ -71,6 +58,23 @@ public class VehicleLeasing {
         } else {
             System.out.println("\nVehicle not found.");
         }
+    }
+
+
+
+    public void setUserDetails(Database.UserDetails userDetails) {
+        this.userDetails = userDetails;
+    }
+
+
+    public boolean isValidVehicleSelection(String vehicleId, Database.VehiclePreferences preferences) {
+        List<Vehicle.VehicleDetails> vehicles = vehicle.searchVehicles(preferences);
+        for (Vehicle.VehicleDetails v : vehicles) {
+            if (v.getVehicleId().equals(vehicleId)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void confirmLeasingTerms(Database.UserDetails userDetails) {
@@ -131,7 +135,7 @@ public class VehicleLeasing {
     }
 
     public void proceedToPayment(PaymentGateway.PaymentDetails paymentDetails) throws InterruptedException {
-        PaymentGateway.PaymentConfirmation confirmation = paymentGateway.computePayment(paymentDetails);
+        PaymentGateway.PaymentConfirmation confirmation = paymentGateway.completePayment(paymentDetails);
         if (confirmation != null) {
             messageService.displayMessage("Successful Payment. \n\nTransaction ID: " + confirmation.getTransactionId());
             vehicle.leaseVehicle(userDetails.getSelectedVehicleId());

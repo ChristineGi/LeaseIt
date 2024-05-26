@@ -2,7 +2,7 @@ import java.util.UUID;
 
 public class PaymentGateway {
 
-    public PaymentConfirmation computePayment(PaymentGateway.PaymentDetails details) {
+    public PaymentConfirmation completePayment(PaymentGateway.PaymentDetails details) {
         try {
             System.out.println("\nProcessing payment...");
             Thread.sleep(1000);

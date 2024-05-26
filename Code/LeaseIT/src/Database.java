@@ -6,15 +6,12 @@ public class Database {
     private List<UserDetails> userDetailsList;
     private List<String> emails;
     private SessionSettings sessionSettings;
-    private List<Leasing> pendingLeases;
 
     public Database() {
-        // Initialize with some mock data
         vehiclePreferencesList = new ArrayList<>();
         userDetailsList = new ArrayList<>();
         emails = new ArrayList<>();
         sessionSettings = new SessionSettings();
-        pendingLeases = new ArrayList<>();
 
         // Add mock data
         vehiclePreferencesList.add(new VehiclePreferences("Sedan", 15000, "Toyota"));
@@ -59,21 +56,6 @@ public class Database {
         return emails;
     }
 
-    public List<Leasing> getPendingLeases() {
-        // Logic to get pending leases
-        return pendingLeases;
-    }
-
-    public void updateLeaseStatus(String leaseID, String status) {
-        // Logic to update lease status
-        for (Leasing lease : pendingLeases) {
-            if (lease.getLeaseID().equals(leaseID)) {
-                lease.setStatus(status);
-                break;
-            }
-        }
-    }
-
     // Supporting classes as inner classes
 
     public static class VehiclePreferences {
@@ -99,7 +81,6 @@ public class Database {
             return preferredBrands;
         }
 
-        // Getters and Setters
     }
 
     public static class SessionSettings {
@@ -156,37 +137,4 @@ public class Database {
         }
     }
 
-    public static class Leasing {
-        private String leaseID;
-        private String vehicleID;
-        private String userID;
-        private String status;
-
-        public Leasing(String leaseID, String vehicleID, String userID, String status) {
-            this.leaseID = leaseID;
-            this.vehicleID = vehicleID;
-            this.userID = userID;
-            this.status = status;
-        }
-
-        public String getLeaseID() {
-            return leaseID;
-        }
-
-        public String getVehicleID() {
-            return vehicleID;
-        }
-
-        public String getUserID() {
-            return userID;
-        }
-
-        public String getStatus() {
-            return status;
-        }
-
-        public void setStatus(String status) {
-            this.status = status;
-        }
-    }
 }

@@ -73,47 +73,50 @@ public class VehiclePickup {
                 System.out.println("\nThe selected vehicle is not available at the chosen dealership.");
                 return;
             }
-        }else if (vehicleDetails.getStatus().equals("UponRequest")) {
+        } else if (vehicleDetails.getStatus().equals("UponRequest")) {
             System.out.println("\nThe selected vehicle is upon request and needs to be prepared.");
             Thread.sleep(1000);
             monitorPreparation();
         }
 
-            List<String> pickupTimes = dealership.checkAvailability(selectedDealership);
-            System.out.println("\nAvailable Pickup Times:");
-            for (int i = 0; i < pickupTimes.size(); i++) {
-                System.out.println((i + 1) + ". " + pickupTimes.get(i));
-            }
+        List<String> pickupTimes = dealership.checkAvailability(selectedDealership);
+        System.out.println("\nAvailable Pickup Times:");
+        for (int i = 0; i < pickupTimes.size(); i++) {
+            System.out.println((i + 1) + ". " + pickupTimes.get(i));
+        }
 
-            System.out.print("Select a pickup time (Enter number): ");
-            int timeChoice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+        System.out.print("Select a pickup time (Enter number): ");
+        int timeChoice = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
 
-            if (timeChoice < 1 || timeChoice > pickupTimes.size()) {
-                System.out.println("\nInvalid choice. Returning to home screen.");
-                return;
-            }
+        if (timeChoice < 1 || timeChoice > pickupTimes.size()) {
+            System.out.println("\nInvalid choice. Returning to home screen.");
+            return;
+        }
 
-            String selectedTime = pickupTimes.get(timeChoice - 1);
-            if (calendar.scheduleUserAppointment(selectedTime) && dealership.scheduleDealershipAppointment(selectedTime)) {
-                dealership.sendEmail("Pickup scheduled for: " + selectedTime);
-                String qrCode = qr.generateQRCode();
-                wallet.importInWallet(qrCode);
+        String selectedTime = pickupTimes.get(timeChoice - 1);
+        if (calendar.scheduleUserAppointment(selectedTime) && dealership.scheduleDealershipAppointment(selectedTime)) {
+            dealership.sendEmail("Pickup scheduled for: " + selectedTime);
+            String qrCode = qr.generateQRCode();
+            wallet.importInWallet(qrCode);
 
-                System.out.print("\nScan QR Code with wallet app (Enter 'scan' to simulate): ");
-                String scanInput = scanner.nextLine();
-                if ("scan".equalsIgnoreCase(scanInput) && qr.verifyQRCode(qrCode)) {
-                    //qr.resendProofEmail();
-                    emailService.sendEmail(userDetails.getUsername(), "Dealership: Proof of pickup email sent.");
-                    selectedLease.setStatus("Active");
-                    System.out.println("\nVehicle pickup process completed successfully.");
-                } else {
-                    handleBrokenQRCode(selectedLease);
-                }
+            if (scanQRCode(qrCode)) {
+                emailService.sendEmail(userDetails.getUsername(), "Dealership: Proof of pickup email sent.");
+                selectedLease.setStatus("Active");
+                System.out.println("\nVehicle pickup process completed successfully.");
             } else {
-                System.out.println("\nFailed to schedule pickup. Please try again.");
+                handleBrokenQRCode(selectedLease);
             }
+        } else {
+            System.out.println("\nFailed to schedule pickup. Please try again.");
+        }
+    }
 
+    private boolean scanQRCode(String qrCode) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("\nScan QR Code with wallet app (Enter 'scan' to simulate): ");
+        String scanInput = scanner.nextLine();
+        return "scan".equalsIgnoreCase(scanInput) && qr.verifyQRCode(qrCode);
     }
 
     private void monitorPreparation() throws InterruptedException {
@@ -123,27 +126,20 @@ public class VehiclePickup {
     }
 
     private void handleBrokenQRCode(LeaseContract.LeasingSubscriptions selectedLease) throws InterruptedException {
-
         Scanner scanner = new Scanner(System.in);
         System.out.print("\nQR Code verification failed. Report failed verification to dealership? (yes/no): ");
         String report = scanner.nextLine();
 
         if (report.equalsIgnoreCase("yes")) {
-
             dealership.reportFailedVerification();
             dealership.promptRegenerateCode();
             emailService.sendEmail(userDetails.getUsername(), "Pickup: QR Code: New QR Code has been sent for your vehicle pickup.");
-
             Thread.sleep(1000);
             System.out.println("\nQR Code has been regenerated and sent via email.");
             Thread.sleep(1000);
 
-            System.out.println("\nYou have received a new QR Code email. Please select 'View Emails' from the main menu to proceed.");
-
             boolean emailViewed = false;
-
             while (!emailViewed) {
-
                 System.out.print("\nEnter 'view emails' to open your emails: ");
                 String emailCommand = scanner.nextLine();
 
@@ -170,18 +166,11 @@ public class VehiclePickup {
                 }
             }
 
-            System.out.print("\nScan QR Code with wallet app (Enter 'scan' to simulate): ");
-
-            String scanInput = scanner.nextLine();
-
             String newQrCode = qr.generateQRCode();
-
-            if ("scan".equalsIgnoreCase(scanInput) && qr.verifyQRCode(newQrCode)) {
-
-                emailService.sendEmail(userDetails.getUsername(), "\nDealership: Proof of pickup email sent.");
+            if (scanQRCode(newQrCode)) {
+                emailService.sendEmail(userDetails.getUsername(), "Dealership: Proof of pickup email sent.");
                 selectedLease.setStatus("Active");
                 System.out.println("\nVehicle pickup process completed successfully.");
-
             } else {
                 System.out.println("\nQR Code verification failed. Please try again later.");
             }

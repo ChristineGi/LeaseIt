@@ -10,7 +10,7 @@ public class Vehicle {
     public Vehicle() {
         vehicleDetailsList = new ArrayList<>();
         vehicleDetailsList.add(new VehicleDetails("1", "Sedan", "Toyota", "Camry", 2021, 15000,false,"Dealership 1", "Available"));
-        vehicleDetailsList.add(new VehicleDetails("2", "SUV", "Honda", "CR-V", 2022, 20000,false,"Dealership 1", "UponRequest"));
+        vehicleDetailsList.add(new VehicleDetails("2", "SUV", "Honda", "CR-V", 2022, 20000,false,"Dealership 1", "Available"));
         vehicleDetailsList.add(new VehicleDetails("3", "Sedan", "Honda", "Accord", 2021, 18000,false,"Dealership 1", "Available"));
         vehicleDetailsList.add(new VehicleDetails("4", "SUV", "Toyota", "RAV4", 2022, 25000,false,"Dealership 1", "Available"));
         vehicleDetailsList.add(new VehicleDetails("5", "Truck", "Ford", "F-150", 2021, 30000,false,"Dealership 1", "UponRequest"));
@@ -54,32 +54,32 @@ public class Vehicle {
         // Simulate data retrieval
     }
 
-        public List<VehicleDetails> searchVehicles(Database.VehiclePreferences preferences) {
-            List<VehicleDetails> filteredVehicles = new ArrayList<>();
-            int budget = preferences.getBudget();
-            String vehicleType = preferences.getVehicleType().toLowerCase();
-            String preferredBrand = preferences.getPreferredBrands().toLowerCase();
-            int budgetTolerance = 2000;
+    public List<VehicleDetails> searchVehicles(Database.VehiclePreferences preferences) {
+        List<VehicleDetails> filteredVehicles = new ArrayList<>();
+        int budget = preferences.getBudget();
+        String vehicleType = preferences.getVehicleType().toLowerCase();
+        String preferredBrand = preferences.getPreferredBrands().toLowerCase();
+        int budgetTolerance = 2000;
 
-            for (VehicleDetails details : vehicleDetailsList) {
-                int matchCount = 0;
+        for (VehicleDetails details : vehicleDetailsList) {
+            int matchCount = 0;
 
-                if (vehicleType.isEmpty() || details.getType().toLowerCase().equals(vehicleType)) {
-                    matchCount++;
-                }
-                if (preferredBrand.isEmpty() || details.getMake().toLowerCase().equals(preferredBrand)) {
-                    matchCount++;
-                }
-                if (budget == 0 || (details.getPrice() >= budget - budgetTolerance && details.getPrice() <= budget + budgetTolerance)) {
-                    matchCount++;
-                }
-
-                if (matchCount >= 2) {
-                    filteredVehicles.add(details);
-                }
+            if (vehicleType.isEmpty() || details.getType().toLowerCase().equals(vehicleType)) {
+                matchCount++;
             }
-            return filteredVehicles;
+            if (preferredBrand.isEmpty() || details.getMake().toLowerCase().equals(preferredBrand)) {
+                matchCount++;
+            }
+            if (budget == 0 || (details.getPrice() >= budget - budgetTolerance && details.getPrice() <= budget + budgetTolerance)) {
+                matchCount++;
+            }
+
+            if (matchCount >= 2) {
+                filteredVehicles.add(details);
+            }
         }
+        return filteredVehicles;
+    }
 
         public VehicleDetails fetchVehicleDetails(String vehicleId) {
             for (VehicleDetails details : vehicleDetailsList) {
