@@ -39,17 +39,17 @@ public class Vehicle {
     }
 
     public void requestVehicleData() {
-        System.out.println("Requesting vehicle data...");
+        System.out.println("\nRequesting vehicle data...");
     }
 
     public void getVehicleStatusData() throws InterruptedException {
-        System.out.println("Getting vehicle status data from cloud...");
+        System.out.println("\nGetting vehicle status data from cloud...");
         Thread.sleep(1000);
         // Simulate data retrieval
     }
 
     public void getMaintenanceHistory() throws InterruptedException {
-        System.out.println("Getting maintenance history from cloud...");
+        System.out.println("\nGetting maintenance history from cloud...");
         Thread.sleep(1000);
         // Simulate data retrieval
     }

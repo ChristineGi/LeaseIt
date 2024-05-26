@@ -16,6 +16,6 @@ public class MaintenanceCenter {
     }
 
     public void prioritizeUrgentMaintenance() {
-        System.out.println("Urgent maintenance has been prioritized.");
+        System.out.println("\nUrgent maintenance has been prioritized.");
     }
 }

@@ -76,6 +76,9 @@ public class VehicleTracking {
                 cloud.setLocationConfigured(true); // Update cloud status
                 connectToCloud();
                 message.displayMessage("Success Registration");
+                Thread.sleep(1000);
+                System.out.println("\nReturn to Home Screen...");
+                return;
             }
 
             requestLocationPermission();
@@ -99,7 +102,6 @@ public class VehicleTracking {
                     startNavigation();
                     updateLocation();
                     completeNavigation();
-                    displayData();
                     System.out.println("\nVehicle tracking process completed successfully.");
                 }
             }

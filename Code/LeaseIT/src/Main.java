@@ -150,9 +150,9 @@ public class Main {
                     vehicleTracking.handleVehicleTracking(userDetails.getUsername(), locationConfig);
                 } else if (choice == 4) {
                     if (vehicleMaintenance.hasActiveLease()) {
-                        System.out.println("Select an option:");
                         System.out.println("1. Maintenance Check");
                         System.out.println("2. Urgent Maintenance");
+                        System.out.print("Select an option: ");
                         int maintenanceChoice = scanner.nextInt();
                         if (maintenanceChoice == 1) {
                             vehicleMaintenance.performMaintenanceCheck();

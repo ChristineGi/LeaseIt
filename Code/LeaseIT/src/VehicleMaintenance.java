@@ -40,20 +40,17 @@ public class VehicleMaintenance {
             return;
         }
 
-        System.out.println("Requesting vehicle data...");
         vehicle.requestVehicleData();
-        System.out.println("Getting vehicle status data from cloud...");
         vehicle.getVehicleStatusData();
-        System.out.println("Getting maintenance history from cloud...");
         vehicle.getMaintenanceHistory();
         ai.analyzeMaintenanceNeeds();
 
-        Random random = new Random();
-        boolean needsMaintenance = random.nextBoolean(); // Simulate 50/50 chance
+        System.out.println("\nAnalyzing maintenance needs...");
+        boolean status = ai.analyzeMaintenanceNeeds();
 
-        if (needsMaintenance) {
-            displayStatus("Vehicle needs maintenance");
+        if(status){
             displayStatus(ai.getAnalysisResults());
+            selectMaintenance();
         } else {
             displayStatus("Vehicle does not need maintenance");
             enablePeriodicChecksPrompt();
@@ -62,7 +59,7 @@ public class VehicleMaintenance {
 
     private void enablePeriodicChecksPrompt() throws InterruptedException {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Vehicle does not need maintenance. Do you want to enable periodic checks? (yes/no):");
+        System.out.print("\nDo you want to enable periodic checks? (yes/no): ");
         String response = scanner.nextLine();
         if (response.equalsIgnoreCase("yes")) {
             enablePeriodicChecks();
@@ -75,7 +72,7 @@ public class VehicleMaintenance {
     }
 
     public void displayStatus(String status) {
-        System.out.println("Vehicle Maintenance Status: " + status);
+        System.out.println("\nVehicle Maintenance Status: " + status);
     }
 
     public void selectMaintenance() throws InterruptedException {
@@ -92,7 +89,7 @@ public class VehicleMaintenance {
     }
 
     private void displayCenters(List<String> centers) {
-        System.out.println("Authorized Maintenance Centers:");
+        System.out.println("\nAuthorized Maintenance Centers:");
         for (int i = 0; i < centers.size(); i++) {
             System.out.println((i + 1) + ". " + centers.get(i));
         }
@@ -100,17 +97,17 @@ public class VehicleMaintenance {
 
     private int selectCenter(int maxIndex) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Select a Maintenance Center (Enter number):");
+        System.out.print("Select a Maintenance Center (Enter number): ");
         int index = scanner.nextInt() - 1;
         if (index < 0 || index >= maxIndex) {
-            System.out.println("Invalid selection. Please try again.");
+            System.out.println("\nInvalid selection. Please try again.");
             return selectCenter(maxIndex);
         }
         return index;
     }
 
     private void displaySchedule(List<String> schedule) {
-        System.out.println("Available Maintenance Schedule:");
+        System.out.println("\nAvailable Maintenance Schedule:");
         for (int i = 0; i < schedule.size(); i++) {
             System.out.println((i + 1) + ". " + schedule.get(i));
         }
@@ -118,29 +115,40 @@ public class VehicleMaintenance {
 
     private int selectAppointment(int maxIndex) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Select an Appointment Time (Enter number):");
+        System.out.print("Select an Appointment Time (Enter number): ");
         int index = scanner.nextInt() - 1;
         if (index < 0 || index >= maxIndex) {
-            System.out.println("Invalid selection. Please try again.");
+            System.out.println("\nInvalid selection. Please try again.");
             return selectAppointment(maxIndex);
         }
         return index;
     }
 
     public class UrgentService {
-        public void requestUrgentService() {
-            System.out.println("Requesting urgent service...");
-        }
-
-        public void confirmUrgentService() {
-            System.out.println("Urgent service confirmed.");
-        }
-
         public void displayIssueDescription() {
+            System.out.print("\nPlease describe the issue you are experiencing with your vehicle: ");
         }
 
         public void submitIssueDescription() {
+            Scanner scanner = new Scanner(System.in);
+            String issueDescription = scanner.nextLine();
+            System.out.println("\nIssue submitted: " + issueDescription);
+            analyzeRisk(issueDescription);
+        }
 
+        private void analyzeRisk(String issueDescription) {
+            ai.analyzeRisk(issueDescription);
+            prioritizeUrgentMaintenance();
+        }
+
+        private void prioritizeUrgentMaintenance() {
+            System.out.println("\nPrioritizing urgent maintenance...");
+            maintenanceCenter.prioritizeUrgentMaintenance();
+            try {
+                selectMaintenance();
+            } catch (InterruptedException e) {
+                System.out.println("\nError while scheduling maintenance: " + e.getMessage());
+            }
         }
     }
 }

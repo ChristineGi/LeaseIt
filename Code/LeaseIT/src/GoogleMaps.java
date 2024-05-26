@@ -9,7 +9,8 @@ public class GoogleMaps {
     }
 
     public void displayData() throws InterruptedException {
-        System.out.println("\nDisplaying data...");
+        System.out.println("\n*** Displaying Parking Locations ***");
+        System.out.println("\n*** Displaying Fuel Stations ***");
         Thread.sleep(1000);
     }
 
