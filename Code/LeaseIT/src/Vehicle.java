@@ -58,9 +58,7 @@ public class Vehicle {
     public boolean isLeased() { return leased; }
     public void setLeased(boolean leased) {this.leased = leased;}
     public String getDealership() {return dealership;}
-    public void setDealership(String dealership) {this.dealership = dealership;}
     public String getStatus() {return status;}
-    public void setStatus(String status) {this.status = status;}
 
 
     public List<Set<String>> getVehiclePreferences() {

@@ -9,10 +9,10 @@ public class VehicleMaintenance {
     private Email emailService;
     private Calendar calendar;
     UrgentService urgentService;
-    private User.UserDetails userDetails;
+    private User userDetails;
     private LeaseContract leaseContract;
 
-    public VehicleMaintenance(Vehicle vehicle, AI ai, Cloud cloud, MaintenanceCenter maintenanceCenter, Email emailService, Calendar calendar, User.UserDetails userDetails, LeaseContract leaseContract) {
+    public VehicleMaintenance(Vehicle vehicle, AI ai, Cloud cloud, MaintenanceCenter maintenanceCenter, Email emailService, Calendar calendar, User userDetails, LeaseContract leaseContract) {
         this.vehicle = vehicle;
         this.ai = ai;
         this.cloud = cloud;

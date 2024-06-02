@@ -9,7 +9,7 @@ public class VehicleLeasing {
     private TaxGateway taxGateway;
     private Message messageService;
     private LeaseContract leaseContract;
-    private User.UserDetails userDetails;
+    private User userDetails;
     private PaymentGateway paymentGateway;
     private SessionSettings sessionSettings;
     private VehiclePreferences currentPreferences;
@@ -128,7 +128,7 @@ public class VehicleLeasing {
     }
 
 
-    public void confirmLeasingTerms(User.UserDetails userDetails) {
+    public void confirmLeasingTerms(User userDetails) {
         try {
             Vehicle selectedVehicleDetails = vehicle.fetchVehicleDetails(userDetails.getSelectedVehicleId());
 
@@ -221,9 +221,8 @@ public class VehicleLeasing {
         }
     }
 
-    public void setUserDetails(User.UserDetails userDetails) {
+    public void setUserDetails(User userDetails) {
         this.userDetails = userDetails;
     }
-
 
 }

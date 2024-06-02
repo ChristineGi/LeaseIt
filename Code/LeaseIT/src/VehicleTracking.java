@@ -84,7 +84,7 @@ public class VehicleTracking {
     }
 
     public static void completeRegistration() throws InterruptedException {
-        System.out.println("\nRegistration complete.");
+        //System.out.println("\nRegistration complete.");
         Thread.sleep(1000);
 
     }

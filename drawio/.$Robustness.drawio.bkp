@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2024-06-01T18:18:35.218Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.2.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="4gdmyWkB69638A1fdKXL" version="24.2.5" type="device" pages="9">
+<mxfile host="Electron" modified="2024-06-02T06:35:39.304Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.2.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="pRPBgD02umcQ9N-F86aO" version="24.2.5" type="device" pages="9">
   <diagram id="2FH4rY_c5h08tlJA4a9-" name="Use Case 1: Robustness Car Leasing">
-    <mxGraphModel dx="3952" dy="796" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3632" dy="796" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -224,6 +224,9 @@
         <mxCell id="qiDbfJXYivvB-niU2YbC-81" value="Εμφανίζει" style="ellipse;shape=umlControl;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-1220" y="1054" width="70" height="80" as="geometry" />
         </mxCell>
+        <mxCell id="GLMpzqFLn7PcEiU0inM9-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="qiDbfJXYivvB-niU2YbC-82" target="GLMpzqFLn7PcEiU0inM9-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="qiDbfJXYivvB-niU2YbC-82" value="Popup:&lt;div&gt;Success&lt;/div&gt;&lt;div&gt;Message&lt;/div&gt;" style="shape=umlBoundary;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-1041" y="1052.5" width="101" height="83" as="geometry" />
         </mxCell>
@@ -238,7 +241,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="qiDbfJXYivvB-niU2YbC-84" value="Εμφανίζει" style="ellipse;shape=umlControl;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="-1014" y="1228" width="70" height="80" as="geometry" />
+          <mxGeometry x="-863" y="1224" width="70" height="80" as="geometry" />
         </mxCell>
         <mxCell id="qiDbfJXYivvB-niU2YbC-87" value="Εμφανίζει" style="ellipse;shape=umlControl;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-1298" y="724" width="72" height="80" as="geometry" />
@@ -378,11 +381,14 @@
         <mxCell id="KrvKU7bJvisxHiOIPClO-21" value="Accept" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="-1322" y="921" width="55" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="KrvKU7bJvisxHiOIPClO-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.995;entryY=0.637;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.995;exitY=0.487;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="qiDbfJXYivvB-niU2YbC-82" target="qiDbfJXYivvB-niU2YbC-84" edge="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
         <mxCell id="KrvKU7bJvisxHiOIPClO-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.447;entryY=-0.005;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="qiDbfJXYivvB-niU2YbC-74" target="qiDbfJXYivvB-niU2YbC-76" edge="1">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GLMpzqFLn7PcEiU0inM9-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GLMpzqFLn7PcEiU0inM9-1" target="qiDbfJXYivvB-niU2YbC-84">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GLMpzqFLn7PcEiU0inM9-1" value="Καταχώρηση&lt;div&gt;Μίσθωσης&lt;/div&gt;" style="ellipse;shape=umlControl;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-869.75" y="1046" width="84" height="96" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
@@ -1415,7 +1421,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="jz5Kp38GvxnJ8Zn_VHRG" name="Use Case 4 Robustness">
-    <mxGraphModel dx="2680" dy="498" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3632" dy="1196" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />

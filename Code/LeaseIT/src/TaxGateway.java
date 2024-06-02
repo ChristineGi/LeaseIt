@@ -1,6 +1,6 @@
 public class TaxGateway {
 
-    public boolean checkCreditworthiness(User.UserDetails userDetails, LeaseContract terms) {
+    public boolean checkCreditworthiness(User userDetails, LeaseContract terms) {
 
         int creditScore = userDetails.getCreditScore();
 

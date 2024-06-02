@@ -31,7 +31,7 @@ public class Main {
 
 
         // Login system
-        User.UserDetails userDetails = null;
+        User userDetails = null;
         while (true) {
 
             System.out.println("\n------- LeaseIT -------");
@@ -62,15 +62,14 @@ public class Main {
                 System.out.println("---------------------------\n");
 
                 System.out.println("------- Supportive Features -------");
-                System.out.println("5. View Leasing Subscriptions");
-                System.out.println("6. View Emails");
-                System.out.println("7. Exit");
+                System.out.println("5. View Emails");
+                System.out.println("6. Exit");
                 System.out.println("-----------------------------------\n");
 
                 System.out.print("Select: ");
                 int choice = scanner.nextInt();
 
-                if (choice == 7) {
+                if (choice == 6) {
                     break;
                 }
 
@@ -86,7 +85,7 @@ public class Main {
                 } else if (choice == 4) {
                     vehicleMaintenance.showVehicleMaintenace();
 
-                } else if (choice == 6) {
+                } else if (choice == 5) {
                     emailService.viewEmails(loggedInUsername);
 
                 } else {

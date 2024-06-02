@@ -10,9 +10,9 @@ public class VehiclePickup {
     private QR qr;
     private Wallet wallet;
     private Email emailService;
-    private User.UserDetails userDetails;
+    private User userDetails;
 
-    public VehiclePickup(User database, LeaseContract leaseContract, GoogleMaps googleMaps, Dealership dealership, Calendar calendar, Wallet wallet, Email emailService, User.UserDetails userDetails) {
+    public VehiclePickup(User database, LeaseContract leaseContract, GoogleMaps googleMaps, Dealership dealership, Calendar calendar, Wallet wallet, Email emailService, User userDetails) {
         this.database = database;
         this.leaseContract = leaseContract;
         this.googleMaps = googleMaps;
