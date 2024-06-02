@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2024-06-02T13:00:46.403Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.2.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="DST_cionmwooCvOrDxYq" version="24.2.5" type="device" pages="9">
+<mxfile host="Electron" modified="2024-06-02T15:56:57.363Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.2.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="B7zuakcUfSkCJ9plhxgZ" version="24.2.5" type="device" pages="9">
   <diagram name="Use Case 1 : Sequence" id="X5nYgyofVkyIiH-S4-DQ">
-    <mxGraphModel dx="2240" dy="1455" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3240" dy="1952" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -539,7 +539,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="IIVZAtRAUTCy35kx5BC_" name="Use Case 2 : Sequence">
-    <mxGraphModel dx="2840" dy="1895" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3240" dy="1952" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1100,7 +1100,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="O5WFMzuFhvkPm-PjCI84" name="Use Case 3: Sequence">
-    <mxGraphModel dx="2432" dy="1596" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3462" dy="2093" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1663,7 +1663,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="KPKuXWxSN2YZeWSegl3k" name="Use Case 4: Sequence">
-    <mxGraphModel dx="2432" dy="1596" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3240" dy="1952" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -2538,7 +2538,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="7Exbbh8T9kvQsRy1Tn0Q" name="Use Cases 5: Sequence">
-    <mxGraphModel dx="2840" dy="1895" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3462" dy="2093" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -3076,7 +3076,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="zsk48GdCwFQsHcdwZxf0" name="Use Case 6: Sequence">
-    <mxGraphModel dx="3052" dy="1738" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2840" dy="1952" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -3538,18 +3538,18 @@
     </mxGraphModel>
   </diagram>
   <diagram id="2Kt--ariy4y3BeO0ubrP" name="Use Case 7: Sequence">
-    <mxGraphModel dx="3052" dy="1738" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3240" dy="1952" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="IdTXmAGMFaYxwcKlwG0j-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#FF0000;strokeWidth=3;" parent="1" vertex="1">
+        <mxCell id="IdTXmAGMFaYxwcKlwG0j-1" value="&lt;meta charset=&quot;utf-8&quot;&gt;&lt;b style=&quot;forced-color-adjust: none; color: rgb(255, 0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;: Create Post&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#FF0000;strokeWidth=3;" parent="1" vertex="1">
           <mxGeometry x="-545" y="156" width="2112" height="558" as="geometry" />
         </mxCell>
         <mxCell id="oMXWqQRuPxVfAZxC3L_c-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=3;" parent="1" vertex="1">
           <mxGeometry x="-549" y="864.46" width="1971" height="259.54" as="geometry" />
         </mxCell>
         <mxCell id="Ckh7iOAx1omoA6LDAKRu-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=3;" parent="1" vertex="1">
-          <mxGeometry x="-521" y="409" width="2051" height="187" as="geometry" />
+          <mxGeometry x="-521" y="344" width="2051" height="252" as="geometry" />
         </mxCell>
         <mxCell id="K6hSAYOpwYjS25YMTTbA-16" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="1491.5" y="460" width="13" height="37" as="geometry" />
@@ -3870,7 +3870,7 @@
             <mxPoint x="818" y="367" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="oMXWqQRuPxVfAZxC3L_c-50" value="scanContent(contentData)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="oMXWqQRuPxVfAZxC3L_c-49" vertex="1" connectable="0">
+        <mxCell id="oMXWqQRuPxVfAZxC3L_c-50" value="&lt;span style=&quot;background-color: rgb(248, 206, 204);&quot;&gt;scanContent(contentData)&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="oMXWqQRuPxVfAZxC3L_c-49" vertex="1" connectable="0">
           <mxGeometry x="0.3504" y="-1" relative="1" as="geometry">
             <mxPoint x="3" y="-16" as="offset" />
           </mxGeometry>
@@ -3892,7 +3892,7 @@
             <mxPoint x="392" y="394" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="oMXWqQRuPxVfAZxC3L_c-54" value="Success Check" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="oMXWqQRuPxVfAZxC3L_c-53" vertex="1" connectable="0">
+        <mxCell id="oMXWqQRuPxVfAZxC3L_c-54" value="&lt;span style=&quot;background-color: rgb(248, 206, 204);&quot;&gt;Success Check&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="oMXWqQRuPxVfAZxC3L_c-53" vertex="1" connectable="0">
           <mxGeometry x="0.3504" y="-1" relative="1" as="geometry">
             <mxPoint x="-21" y="-13" as="offset" />
           </mxGeometry>
@@ -3977,11 +3977,11 @@
             <mxPoint x="-21" y="-13" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Ckh7iOAx1omoA6LDAKRu-1" value="&lt;font color=&quot;#ff0000&quot;&gt;&lt;b&gt;alt: Create Post&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=default;strokeColor=#FF0000;strokeWidth=3;" parent="1" vertex="1">
-          <mxGeometry x="-543.5" y="156" width="109.5" height="27" as="geometry" />
+        <mxCell id="Ckh7iOAx1omoA6LDAKRu-1" value="&lt;font color=&quot;#ff0000&quot;&gt;&lt;b&gt;alt&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=default;strokeColor=#FF0000;strokeWidth=3;" parent="1" vertex="1">
+          <mxGeometry x="-543.5" y="156" width="42.5" height="28" as="geometry" />
         </mxCell>
-        <mxCell id="Ckh7iOAx1omoA6LDAKRu-3" value="&lt;font color=&quot;#ff0000&quot;&gt;&lt;b&gt;alt: Inappropriate Content&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=3;" parent="1" vertex="1">
-          <mxGeometry x="-491" y="433" width="171" height="27" as="geometry" />
+        <mxCell id="Ckh7iOAx1omoA6LDAKRu-3" value="&lt;font color=&quot;#ff0000&quot;&gt;&lt;b&gt;Inappropriate Content&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=none;strokeWidth=3;" parent="1" vertex="1">
+          <mxGeometry x="-280" y="451" width="171" height="27" as="geometry" />
         </mxCell>
         <mxCell id="K6hSAYOpwYjS25YMTTbA-17" value="&lt;b style=&quot;forced-color-adjust: none; color: rgb(0, 0, 0); font-family: Helvetica; font-size: 18.6667px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;Use Case 7:&lt;span&gt;&amp;nbsp;&lt;/span&gt;&lt;/b&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 18.6667px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;&quot;&gt;Community Forum&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="374.9966666666665" y="-246" width="292" height="44" as="geometry" />
@@ -4030,11 +4030,26 @@
             <mxPoint x="40" y="-12" as="offset" />
           </mxGeometry>
         </mxCell>
+        <mxCell id="GvVuwm8Rize6xiBiPW8z-1" value="&lt;font color=&quot;#ff0000&quot;&gt;&lt;b&gt;Create Post&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=default;strokeColor=none;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="-466" y="209" width="108" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="Gb8Z9KXy3dr1r_E8SZPT-1" value="" style="endArrow=none;dashed=1;html=1;strokeWidth=3;rounded=0;strokeColor=#FF0000;exitX=0;exitY=0.398;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1.001;entryY=0.297;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="Ckh7iOAx1omoA6LDAKRu-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-521" y="418" as="sourcePoint" />
+            <mxPoint x="1410" y="418" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Gb8Z9KXy3dr1r_E8SZPT-2" value="&lt;font color=&quot;#ff0000&quot;&gt;&lt;b&gt;alt&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F8CECC;strokeColor=#FF0000;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="-521" y="344" width="42.5" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="Gb8Z9KXy3dr1r_E8SZPT-3" value="&lt;b style=&quot;&quot;&gt;&lt;font color=&quot;#3333ff&quot;&gt;Success Content Check&lt;/font&gt;&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=none;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="-276" y="372" width="171" height="27" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram id="RI1ZZr2jHHNy6okQ3j36" name="Use Case 8: Sequence">
-    <mxGraphModel dx="3534" dy="2024" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3240" dy="1952" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -4399,11 +4414,11 @@
             <mxPoint x="8" y="-14" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="jE-3DR-onOMhuJbm4BGV-2" value="&lt;b&gt;&lt;font color=&quot;#000099&quot;&gt;Βασική Ροή&lt;/font&gt;&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;" parent="1" vertex="1">
-          <mxGeometry x="-467" y="238" width="86" height="28" as="geometry" />
+        <mxCell id="jE-3DR-onOMhuJbm4BGV-2" value="&lt;b&gt;&lt;font color=&quot;#000099&quot;&gt;Non Suspicious Activity&lt;/font&gt;&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="-475" y="245" width="145" height="28" as="geometry" />
         </mxCell>
-        <mxCell id="2yNspNpBByxHsffQsnrN-1" value="&lt;font color=&quot;#ff0000&quot;&gt;&lt;b&gt;alt: Suspicious Activity&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=default;strokeColor=#FF0000;strokeWidth=3;" parent="1" vertex="1">
-          <mxGeometry x="-535" y="905" width="188" height="27" as="geometry" />
+        <mxCell id="2yNspNpBByxHsffQsnrN-1" value="&lt;font color=&quot;#ff0000&quot;&gt;&lt;b&gt;alt&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=default;strokeColor=#FF0000;strokeWidth=3;" parent="1" vertex="1">
+          <mxGeometry x="-535" y="210" width="50" height="28" as="geometry" />
         </mxCell>
         <mxCell id="2yNspNpBByxHsffQsnrN-6" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -4475,11 +4490,14 @@
             <mxPoint x="7" y="-13" as="offset" />
           </mxGeometry>
         </mxCell>
+        <mxCell id="Fsm9miH57AAgGjiKbpEu-2" value="&lt;font color=&quot;#ff0000&quot;&gt;&lt;b&gt;Suspicious Activity&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=default;strokeColor=none;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="-282" y="955" width="188" height="27" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram id="Ezysn7fAsAcZGUdpLsgx" name="Use Case 9: Sequence">
-    <mxGraphModel dx="3352" dy="1916" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1542" dy="964" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -4520,7 +4538,7 @@
           <mxGeometry x="-511.5" y="-56.25" width="13" height="1053.25" as="geometry" />
         </mxCell>
         <mxCell id="1HwaAsgg_rdTUzw6yzT8-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#FF0000;strokeWidth=3;" parent="1" vertex="1">
-          <mxGeometry x="-541" y="542" width="1280" height="200" as="geometry" />
+          <mxGeometry x="-541" y="370" width="1280" height="372" as="geometry" />
         </mxCell>
         <mxCell id="IQChnmLD02s0DjwgXJKd-1" value="AI Incident Analyzer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
           <mxGeometry x="453" y="-170" width="132" height="1416" as="geometry" />
@@ -4686,8 +4704,8 @@
         </mxCell>
         <mxCell id="kLS25SrJuym4T2N4GatO-22" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="-61" y="349" as="sourcePoint" />
-            <mxPoint x="139" y="349" as="targetPoint" />
+            <mxPoint x="-61" y="332" as="sourcePoint" />
+            <mxPoint x="139" y="332" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="kLS25SrJuym4T2N4GatO-23" value="shareIncidentData()" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="kLS25SrJuym4T2N4GatO-22" vertex="1" connectable="0">
@@ -4697,8 +4715,8 @@
         </mxCell>
         <mxCell id="kLS25SrJuym4T2N4GatO-24" value="" style="endArrow=classic;html=1;rounded=0;dashed=1;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="135" y="378" as="sourcePoint" />
-            <mxPoint x="-61" y="378" as="targetPoint" />
+            <mxPoint x="135" y="357" as="sourcePoint" />
+            <mxPoint x="-61" y="357" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="kLS25SrJuym4T2N4GatO-25" value="return" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="kLS25SrJuym4T2N4GatO-24" vertex="1" connectable="0">
@@ -4871,11 +4889,11 @@
             <mxPoint x="43" y="-12" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="-s8hGfsdTIJ_UT0f49sg-1" value="&lt;font color=&quot;#ff0000&quot;&gt;&lt;b&gt;alt: Accepted via Geofencing&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=default;strokeColor=#FF0000;strokeWidth=3;" parent="1" vertex="1">
-          <mxGeometry x="-541" y="825" width="188" height="27" as="geometry" />
+        <mxCell id="-s8hGfsdTIJ_UT0f49sg-1" value="&lt;font color=&quot;#ff0000&quot;&gt;&lt;b&gt;alt&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=default;strokeColor=#FF0000;strokeWidth=3;" parent="1" vertex="1">
+          <mxGeometry x="-541" y="825" width="56" height="32" as="geometry" />
         </mxCell>
-        <mxCell id="-s8hGfsdTIJ_UT0f49sg-2" value="&lt;font color=&quot;#ff0000&quot;&gt;&lt;b&gt;alt: No Roadside Assistance Found&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=default;strokeColor=#FF0000;strokeWidth=3;" parent="1" vertex="1">
-          <mxGeometry x="-541" y="542" width="276" height="27" as="geometry" />
+        <mxCell id="-s8hGfsdTIJ_UT0f49sg-2" value="&lt;font color=&quot;#ff0000&quot;&gt;&lt;b&gt;alt&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=default;strokeColor=#FF0000;strokeWidth=3;" parent="1" vertex="1">
+          <mxGeometry x="-541" y="370" width="51" height="29" as="geometry" />
         </mxCell>
         <mxCell id="XD_nohPU1fXyB-n0EsDH-14" value="&lt;b style=&quot;forced-color-adjust: none; color: rgb(0, 0, 0); font-family: Helvetica; font-size: 18.6667px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;Use Case 9 :&lt;/b&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 18.6667px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;&quot;&gt;&lt;span&gt;&amp;nbsp;&lt;/span&gt;Incident Report&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="230.99571428571426" y="-227.00285714285712" width="271" height="44" as="geometry" />
@@ -4934,6 +4952,21 @@
           <mxGeometry x="0.3504" y="-1" relative="1" as="geometry">
             <mxPoint x="-11" y="-13" as="offset" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="TiyFPJPJShkQjFGSYS5e-1" value="" style="endArrow=none;dashed=1;html=1;strokeWidth=3;rounded=0;strokeColor=#FF0000;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-541" y="527" as="sourcePoint" />
+            <mxPoint x="740" y="527" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TiyFPJPJShkQjFGSYS5e-2" value="&lt;font color=&quot;#ff0000&quot;&gt;&lt;b&gt;No Roadside Assistance Found&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=default;strokeColor=none;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="-279" y="575" width="185" height="29" as="geometry" />
+        </mxCell>
+        <mxCell id="TiyFPJPJShkQjFGSYS5e-3" value="&lt;b style=&quot;&quot;&gt;&lt;font color=&quot;#3333ff&quot;&gt;Roadside Assistance Found&lt;/font&gt;&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=default;strokeColor=none;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="-283" y="426" width="185" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="TiyFPJPJShkQjFGSYS5e-4" value="&lt;font color=&quot;#ff0000&quot;&gt;&lt;b&gt;Accepted via Geofencing&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=default;strokeColor=none;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="-483" y="897" width="146" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
