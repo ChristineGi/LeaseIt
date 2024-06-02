@@ -18,14 +18,10 @@ public class LocationConfiguration {
     public void adjustBoundaries() throws InterruptedException {
         System.out.println("\nAdjusting boundaries...");
         Thread.sleep(1000);
+        VehicleTracking.completeRegistration();
 
     }
 
-    public void completeRegistration() throws InterruptedException {
-        System.out.println("\nRegistration complete.");
-        Thread.sleep(1000);
-
-    }
 
     public void getBoundarySettings() throws InterruptedException {
         System.out.println("\nGetting boundary settings...");

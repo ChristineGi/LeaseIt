@@ -5,7 +5,7 @@ public class Cloud {
     private Random random;
 
     public Cloud() {
-        this.locationConfigured = false; // By default, assume no location is configured
+        this.locationConfigured = false;
         this.random = new Random();
     }
 
@@ -14,7 +14,7 @@ public class Cloud {
     }
 
     public boolean connect() {
-        if (random.nextBoolean()) { // Simulate a 50% chance of failure
+        if (random.nextBoolean()) {
             if (locationConfigured) {
                 System.out.println("\nConnected to cloud.");
                 return true;

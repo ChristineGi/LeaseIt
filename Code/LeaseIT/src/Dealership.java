@@ -3,7 +3,6 @@ import java.util.List;
 
 public class Dealership {
     public List<String> retrieveDealerships() {
-        // Logic to retrieve dealership details
         List<String> dealerships = new ArrayList<>();
         dealerships.add("Dealership 1");
         dealerships.add("Dealership 2");
@@ -11,7 +10,6 @@ public class Dealership {
     }
 
     public List<String> checkAvailability(String dealershipID) {
-        // Logic to check availability at the dealership
         List<String> pickupTimes = new ArrayList<>();
         pickupTimes.add("10:00 AM");
         pickupTimes.add("02:00 PM");
@@ -19,9 +17,8 @@ public class Dealership {
     }
 
     public boolean isVehicleAvailableAtDealership(String vehicleId, String dealership) {
-        // Logic to check if the vehicle is available at the specified dealership
         Vehicle vehicle = new Vehicle();
-        Vehicle.VehicleDetails details = vehicle.fetchVehicleDetails(vehicleId);
+        Vehicle details = vehicle.fetchVehicleDetails(vehicleId);
         return details != null && details.getDealership().equals(dealership) && details.getStatus().equals("Available");
     }
 
@@ -32,8 +29,12 @@ public class Dealership {
     }
 
     public void sendEmail(String details) {
-        // Logic to send email to user
         System.out.println("\nEmail sent with details: " + details);
+    }
+
+    public void notifyDelay() throws InterruptedException {
+        System.out.println("\nThe selected vehicle is upon request and needs to be prepared.");
+        Thread.sleep(1000);
     }
 
     public void monitorPreparation() throws InterruptedException {
@@ -55,7 +56,4 @@ public class Dealership {
 
     }
 
-    public void promptRegenerateCode() {
-        System.out.println("\nDealership prompted to regenerate QR code.");
-    }
 }

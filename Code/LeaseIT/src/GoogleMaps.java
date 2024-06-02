@@ -1,8 +1,9 @@
 public class GoogleMaps {
+
     public void syncLocation() {
-        // Logic to sync location
         System.out.println("\nLocation synced with Google Maps.");
     }
+
     public void loadVehicleCoords() throws InterruptedException {
         System.out.println("\nLoading vehicle coordinates...");
         Thread.sleep(1000);
@@ -24,13 +25,13 @@ public class GoogleMaps {
         Thread.sleep(1000);
     }
 
-    public void updateLocation() throws InterruptedException {
-        System.out.println("\nUpdating location...");
+    public void loadRouteToVehicle() throws InterruptedException {
+        System.out.println("\nLoading Route...");
         Thread.sleep(1000);
     }
 
-    public void getBoundarySettings() throws InterruptedException {
-        System.out.println("\nGetting boundary settings...");
+    public void updateLocation() throws InterruptedException {
+        System.out.println("\nUpdating location...");
         Thread.sleep(1000);
     }
 

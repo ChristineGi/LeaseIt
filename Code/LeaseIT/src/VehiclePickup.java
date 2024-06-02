@@ -2,7 +2,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class VehiclePickup {
-    private Database database;
+    private User database;
     private LeaseContract leaseContract;
     private GoogleMaps googleMaps;
     private Dealership dealership;
@@ -10,9 +10,9 @@ public class VehiclePickup {
     private QR qr;
     private Wallet wallet;
     private Email emailService;
-    private Database.UserDetails userDetails;
+    private User.UserDetails userDetails;
 
-    public VehiclePickup(Database database, LeaseContract leaseContract, GoogleMaps googleMaps, Dealership dealership, Calendar calendar, Wallet wallet, Email emailService, Database.UserDetails userDetails) {
+    public VehiclePickup(User database, LeaseContract leaseContract, GoogleMaps googleMaps, Dealership dealership, Calendar calendar, Wallet wallet, Email emailService, User.UserDetails userDetails) {
         this.database = database;
         this.leaseContract = leaseContract;
         this.googleMaps = googleMaps;
@@ -25,6 +25,7 @@ public class VehiclePickup {
     }
 
     public void showVehiclePickup() throws InterruptedException {
+
         List<LeaseContract.LeasingSubscriptions> pendingLeases = leaseContract.getUserLeasesByStatus(userDetails.getUsername(), "Pending");
         if (pendingLeases.isEmpty()) {
             System.out.println("\nNo pending leases available.");
@@ -40,14 +41,10 @@ public class VehiclePickup {
 
         System.out.print("Select a lease to proceed with vehicle pickup (Enter number): ");
         int leaseChoice = scanner.nextInt();
-        scanner.nextLine(); // Consume newline
-
-        if (leaseChoice < 1 || leaseChoice > pendingLeases.size()) {
-            System.out.println("\nInvalid choice. Returning to home screen.");
-            return;
-        }
+        scanner.nextLine();
 
         LeaseContract.LeasingSubscriptions selectedLease = pendingLeases.get(leaseChoice - 1);
+
         googleMaps.syncLocation();
 
         List<String> dealerships = dealership.retrieveDealerships();
@@ -66,7 +63,8 @@ public class VehiclePickup {
         }
 
         String selectedDealership = dealerships.get(dealershipChoice - 1);
-        Vehicle.VehicleDetails vehicleDetails = new Vehicle().fetchVehicleDetails(selectedLease.getVehicleID());
+
+        Vehicle vehicleDetails = new Vehicle().fetchVehicleDetails(selectedLease.getVehicleID());
 
         if (vehicleDetails.getStatus().equals("Available")) {
             if (!dealership.isVehicleAvailableAtDealership(selectedLease.getVehicleID(), selectedDealership)) {
@@ -74,12 +72,13 @@ public class VehiclePickup {
                 return;
             }
         } else if (vehicleDetails.getStatus().equals("UponRequest")) {
-            System.out.println("\nThe selected vehicle is upon request and needs to be prepared.");
+            dealership.notifyDelay();
             Thread.sleep(1000);
             monitorPreparation();
         }
 
         List<String> pickupTimes = dealership.checkAvailability(selectedDealership);
+
         System.out.println("\nAvailable Pickup Times:");
         for (int i = 0; i < pickupTimes.size(); i++) {
             System.out.println((i + 1) + ". " + pickupTimes.get(i));
@@ -100,7 +99,7 @@ public class VehiclePickup {
             String qrCode = qr.generateQRCode();
             wallet.importInWallet(qrCode);
 
-            if (scanQRCode(qrCode)) {
+            if (verifyQRCode(qrCode)) {
                 emailService.sendEmail(userDetails.getUsername(), "Dealership: Proof of pickup email sent.");
                 selectedLease.setStatus("Active");
                 System.out.println("\nVehicle pickup process completed successfully.");
@@ -112,7 +111,7 @@ public class VehiclePickup {
         }
     }
 
-    private boolean scanQRCode(String qrCode) {
+    private boolean verifyQRCode(String qrCode) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("\nScan QR Code with wallet app (Enter 'scan' to simulate): ");
         String scanInput = scanner.nextLine();
@@ -125,55 +124,33 @@ public class VehiclePickup {
         emailService.sendEmail(userDetails.getUsername(), "Dealership: Your vehicle is ready for pickup.");
     }
 
+    public void promptRegenerateCode() {
+        System.out.println("\nDealership prompted to regenerate QR code.");
+    }
+
     private void handleBrokenQRCode(LeaseContract.LeasingSubscriptions selectedLease) throws InterruptedException {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("\nQR Code verification failed. Report failed verification to dealership? (yes/no): ");
-        String report = scanner.nextLine();
 
-        if (report.equalsIgnoreCase("yes")) {
-            dealership.reportFailedVerification();
-            dealership.promptRegenerateCode();
-            emailService.sendEmail(userDetails.getUsername(), "Pickup: QR Code: New QR Code has been sent for your vehicle pickup.");
-            Thread.sleep(1000);
-            System.out.println("\nQR Code has been regenerated and sent via email.");
-            Thread.sleep(1000);
+        dealership.reportFailedVerification();
+        promptRegenerateCode();
 
-            boolean emailViewed = false;
-            while (!emailViewed) {
-                System.out.print("\nEnter 'view emails' to open your emails: ");
-                String emailCommand = scanner.nextLine();
+        System.out.println("\nQR Code has been regenerated and sent via email.");
+        Thread.sleep(1000);
 
-                if (emailCommand.equalsIgnoreCase("view emails")) {
-                    List<String> emails = emailService.getEmails(userDetails.getUsername());
-                    if (emails.isEmpty()) {
-                        System.out.println("\nYou've got no emails.");
-                    } else {
-                        System.out.println("\nEmails:");
-                        for (int i = 0; i < emails.size(); i++) {
-                            System.out.println((i + 1) + ". " + emails.get(i));
-                        }
-                        System.out.print("\nEnter the email number to read or '0' to go back: ");
-                        int emailChoice = scanner.nextInt();
-                        scanner.nextLine();
+        emailService.sendEmail(userDetails.getUsername(), "Pickup: QR Code: New QR Code has been sent for your vehicle pickup.");
+        Thread.sleep(1000);
 
-                        if (emailChoice > 0 && emailChoice <= emails.size()) {
-                            System.out.println("\nEmail: " + emails.get(emailChoice - 1));
-                            emailViewed = true;
-                        } else {
-                            System.out.println("\nInvalid choice. Returning to main menu.");
-                        }
-                    }
-                }
-            }
+        boolean emailViewed = false;
+        while (!emailViewed) {
 
-            String newQrCode = qr.generateQRCode();
-            if (scanQRCode(newQrCode)) {
-                emailService.sendEmail(userDetails.getUsername(), "Dealership: Proof of pickup email sent.");
-                selectedLease.setStatus("Active");
-                System.out.println("\nVehicle pickup process completed successfully.");
-            } else {
-                System.out.println("\nQR Code verification failed. Please try again later.");
-            }
+        emailService.viewEmails(userDetails.getUsername());
+        emailViewed = true;
+
+        }
+        String newQrCode = qr.generateQRCode();
+        if (verifyQRCode(newQrCode)) {
+            emailService.sendEmail(userDetails.getUsername(), "Dealership: Proof of pickup email sent.");
+            selectedLease.setStatus("Active");
+            System.out.println("\nVehicle pickup process completed successfully.");
         } else {
             System.out.println("\nQR Code verification failed. Please try again later.");
         }

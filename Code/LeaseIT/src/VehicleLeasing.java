@@ -1,22 +1,20 @@
 import java.util.List;
 import java.util.Scanner;
-import java.util.HashSet;
 import java.util.Set;
 
 public class VehicleLeasing {
 
-    private Database database;
     private Vehicle vehicle;
-    private LeaseContract leaseContract;
+    private Email emailService;
     private TaxGateway taxGateway;
     private Message messageService;
+    private LeaseContract leaseContract;
+    private User.UserDetails userDetails;
     private PaymentGateway paymentGateway;
-    private Email emailService;
-    private Database.UserDetails userDetails;
-    private Database.VehiclePreferences currentPreferences;
+    private SessionSettings sessionSettings;
+    private VehiclePreferences currentPreferences;
 
-    public VehicleLeasing(Database database, Vehicle vehicle, LeaseContract leaseContract, TaxGateway taxGateway, Message messageService, PaymentGateway paymentGateway, Email emailService) {
-        this.database = database;
+    public VehicleLeasing(Vehicle vehicle, LeaseContract leaseContract, TaxGateway taxGateway, Message messageService, PaymentGateway paymentGateway, Email emailService) {
         this.vehicle = vehicle;
         this.leaseContract = leaseContract;
         this.taxGateway = taxGateway;
@@ -25,74 +23,101 @@ public class VehicleLeasing {
         this.emailService = emailService;
         this.userDetails = null;
         this.currentPreferences = null;
+        sessionSettings = new SessionSettings();
     }
 
     public void showLeasingVehicleScreen() {
+
         System.out.println("\n------ Vehicle Leasing Screen ------");
-        List<Database.VehiclePreferences> preferences = database.getVehiclePreferences();
-        // Display preferences to user
+
+        List<Set<String>> preferences = vehicle.getVehiclePreferences();
+
+        System.out.println("\nVehicle Types: " + preferences.get(0));
+
+        System.out.println("\nVehicle Brands: " + preferences.get(1));
+
+        Scanner scanner = new Scanner(System.in);
+
+        try {
+
+            System.out.println("\nEnter your preferences: ");
+
+            System.out.print("\nSelect Vehicle Type: ");
+            String vehicleType = scanner.nextLine();
+
+            System.out.print("\nSelect Preferred Brands: ");
+            String preferredBrands = scanner.nextLine();
+
+            System.out.print("\nBudget Price: ");
+            int budget = scanner.nextInt();
+            scanner.nextLine();
+
+            VehiclePreferences preferencesInput = new VehiclePreferences(vehicleType, budget, preferredBrands);
+
+            boolean vehiclesAvailable = submitPreferences(preferencesInput);
+
+            if (!vehiclesAvailable) {
+                return;
+            }
+
+            String vehicleId;
+            System.out.print("\nSelect a vehicle (Enter vehicle ID): ");
+            vehicleId = scanner.nextLine();
+
+            selectVehicle(vehicleId);
+            confirmLeasingTerms(userDetails);
+            System.out.println("\nReturning to Home Screen...");
+
+        } catch (Exception e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        }
     }
 
-    public boolean submitPreferences(Database.VehiclePreferences preferences) {
-        // Valid vehicle types
-        Set<String> validVehicleTypes = new HashSet<>();
-        validVehicleTypes.add("sedan");
-        validVehicleTypes.add("suv");
-        validVehicleTypes.add("truck");
 
-        // Valid credit score range
-        int minCreditScore = 650;
-        int maxCreditScore = 850;
+    public boolean submitPreferences(VehiclePreferences preferences) {
 
-        // Valid budget range
-        int minBudget = 10000;
-        int maxBudget = 50000;
+        System.out.println("Test Data: Vehicle Type: " + preferences.getVehicleType() +
+                        ", Budget: " + preferences.getBudget() +
+                        ", Credit Score: " + userDetails.getCreditScore());
 
-        // Test data for print screens
-        System.out.println("Test Data: Vehicle Type: " + preferences.getVehicleType() + ", Budget: " + preferences.getBudget() + ", Credit Score: " + userDetails.getCreditScore());
-
-        // Check vehicle type
-        if (!validVehicleTypes.contains(preferences.getVehicleType().toLowerCase())) {
-            //System.out.println("Expected Result: Error: Invalid vehicle type");
-            System.out.println("\nResult: Error: Invalid vehicle type");
-            return false;
-        }
-
-        // Check budget
-        if (preferences.getBudget() < minBudget || preferences.getBudget() > maxBudget) {
-            //System.out.println("Expected Result: Error: Invalid budget");
-            System.out.println("\nResult: Error: Invalid budget");
-            return false;
-        }
-
-        // Check credit score
-        if (userDetails.getCreditScore() < minCreditScore || userDetails.getCreditScore() > maxCreditScore) {
-            //System.out.println("Expected Result: Error: Invalid credit score");
-            System.out.println("\nResult: Error: Invalid credit score");
-            return false;
-        }
-
-        // Proceed if all checks pass
         this.currentPreferences = preferences;
-        List<Vehicle.VehicleDetails> vehicles = vehicle.searchVehicles(preferences);
+
+        List<Vehicle> vehicles = vehicle.searchVehicles(preferences);
+
         if (vehicles.isEmpty()) {
             System.out.println("\nNo vehicles available with the specified preferences.");
             return false;
         }
+
         System.out.println("\n--------------------------- Available Vehicles ---------------------------");
-        for (Vehicle.VehicleDetails v : vehicles) {
-            System.out.println("ID: " + v.getVehicleId() + ", Type: " + v.getType() + ", Make: " + v.getMake() + ", Model: " + v.getModel() + ", Price: " + v.getPrice() + ", Leased: " + (v.isLeased() ? "Yes" : "No"));
+
+        for (Vehicle v : vehicles) {
+            System.out.println("ID: " + v.getVehicleId() +
+                    ", Type: " + v.getType() +
+                    ", Make: " + v.getMake() +
+                    ", Model: " + v.getModel() +
+                    ", Price: " + v.getPrice() +
+                    ", Leased: " + (v.isLeased() ? "Yes" : "No"));
         }
-        //System.out.println("Expected Result: Leasing terms calculated successfully");
-        System.out.println("\nResult: Leasing terms calculated successfully");
+
         return true;
     }
 
+
     public void selectVehicle(String vehicleId) {
-        Vehicle.VehicleDetails details = vehicle.fetchVehicleDetails(vehicleId);
+
+        Vehicle details = vehicle.fetchVehicleDetails(vehicleId);
+
         if (details != null) {
+
             System.out.println("\n----------------------------- Selected Vehicle Details -----------------------------");
-            System.out.println("ID: " + details.getVehicleId() + ", Type: " + details.getType() + ", Make: " + details.getMake() + ", Model: " + details.getModel() + ", Year: " + details.getYear() + ", Price: " + details.getPrice() + ", Leased: " + (details.isLeased() ? "Yes" : "No"));
+            System.out.println("ID: " + details.getVehicleId() +
+                    ", Type: " + details.getType() +
+                    ", Make: " + details.getMake() +
+                    ", Model: " + details.getModel() +
+                    ", Year: " + details.getYear() +
+                    ", Price: " + details.getPrice() +
+                    ", Leased: " + (details.isLeased() ? "Yes" : "No"));
             System.out.println("------------------------------------------------------------------------------------");
 
             userDetails.setSelectedVehicleId(vehicleId); // Set the selected vehicle ID
@@ -102,62 +127,48 @@ public class VehicleLeasing {
         }
     }
 
-    public void setUserDetails(Database.UserDetails userDetails) {
-        this.userDetails = userDetails;
-    }
 
-    public boolean isValidVehicleSelection(String vehicleId, Database.VehiclePreferences preferences) {
-        List<Vehicle.VehicleDetails> vehicles = vehicle.searchVehicles(preferences);
-        for (Vehicle.VehicleDetails v : vehicles) {
-            if (v.getVehicleId().equals(vehicleId)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public void confirmLeasingTerms(Database.UserDetails userDetails) {
+    public void confirmLeasingTerms(User.UserDetails userDetails) {
         try {
+            Vehicle selectedVehicleDetails = vehicle.fetchVehicleDetails(userDetails.getSelectedVehicleId());
+
             System.out.println("\nSystem connects to Tax Gateway...");
-            Thread.sleep(1000); // Simulate loading
+            Thread.sleep(1000);
+
             System.out.println("\nFetching Data...");
-            Thread.sleep(1000); // Simulate loading
+            Thread.sleep(1000);
 
             System.out.println("\nCalculating Leasing Terms...");
-            Thread.sleep(1000); // Simulate loading
-            Vehicle.VehicleDetails selectedVehicleDetails = vehicle.fetchVehicleDetails(userDetails.getSelectedVehicleId());
-            LeaseContract.LeasingTerms calculatedTerms = leaseContract.calculateLeasingTerms(selectedVehicleDetails);
+            Thread.sleep(1000);
 
-            boolean isCreditWorthy = taxGateway.checkCreditworthiness(userDetails, calculatedTerms);
+            leaseContract.calculateLeasingTerms(selectedVehicleDetails);
+
+            boolean isCreditWorthy = taxGateway.checkCreditworthiness(userDetails, leaseContract);
+
             if (isCreditWorthy) {
-                System.out.println("\nCheck Creditworthiness: Approved");
-                Thread.sleep(1000); // Simulate loading
 
-                System.out.println("\n----------  Leasing Terms ----------");
-                System.out.printf("Monthly Payment: %.2f $", calculatedTerms.getMonthlyPayment());
-                System.out.println("\nLease Term: " + calculatedTerms.getLeaseTerm() + " months");
-                System.out.println("Mileage Limit: " + calculatedTerms.getMileageLimit() + " miles");
-                System.out.println("------------------------------------");
+                System.out.println("\nCheck Creditworthiness: Approved");
+                Thread.sleep(1000);
+
+                leaseContract.requestLeasingTerms();
 
                 // Prompt user for approval
                 Scanner scanner = new Scanner(System.in);
                 System.out.print("\nDo you approve the leasing terms? (yes/no): ");
                 String approval = scanner.nextLine();
+
                 if (!approval.equalsIgnoreCase("yes")) {
                     System.out.println("\nLeasing process aborted by user.");
                     return;
                 }
 
-                LeaseContract.LeasingTerms finalTerms = leaseContract.requestLeasingTerms(calculatedTerms);
                 messageService.displayApprovalMessage("Approved!");
-                //leaseContract.finalizeLeaseContract();
 
                 // Prompt user to proceed to payment
                 System.out.print("\nProceed to Payment? (yes/no): ");
                 String pay = scanner.nextLine();
                 if (pay.equalsIgnoreCase("yes")) {
-                    PaymentGateway.PaymentDetails paymentDetails = new PaymentGateway.PaymentDetails();
-                    proceedToPayment(paymentDetails);
+                    proceedToPayment();
                 } else {
                     abandonLeasingProcess();
                 }
@@ -165,7 +176,8 @@ public class VehicleLeasing {
                 System.out.println("Expected Result: Error: Creditworthiness check failed");
                 System.out.println("Actual Result: Error: Creditworthiness check failed");
                 System.out.println("\nCheck Creditworthiness: Rejected");
-                Thread.sleep(1000); // Simulate loading
+                Thread.sleep(1000);
+
                 messageService.displayRejectionMessage("\nRejected");
                 System.out.println("\nCreditworthiness check failed. Please revise your application.");
             }
@@ -174,26 +186,31 @@ public class VehicleLeasing {
         }
     }
 
-    public void proceedToPayment(PaymentGateway.PaymentDetails paymentDetails) throws InterruptedException {
-        PaymentGateway.PaymentConfirmation confirmation = paymentGateway.completePayment(paymentDetails);
-        if (confirmation != null) {
-            messageService.displayMessage("Successful Payment. \n\nTransaction ID: " + confirmation.getTransactionId());
-            vehicle.leaseVehicle(userDetails.getSelectedVehicleId());
-            leaseContract.addLease(userDetails.getSelectedVehicleId(), userDetails.getUsername());
-        }
+
+        public void proceedToPayment() throws InterruptedException {
+        paymentGateway.completePayment();
+        messageService.displayMessage("Successful Payment.");
+        vehicle.leaseVehicle(userDetails.getSelectedVehicleId());
+        leaseContract.addLease(userDetails.getSelectedVehicleId(), userDetails.getUsername());
     }
 
-    public void abandonLeasingProcess() {
-        Database.SessionSettings settings = new Database.SessionSettings();
+
+    public void abandonLeasingProcess() throws InterruptedException {
+        SessionSettings settings = new SessionSettings();
         settings.setSelectedVehicleId(userDetails.getSelectedVehicleId());
         settings.setPreferences(currentPreferences);
-        database.saveSessionSettings(settings);
+        sessionSettings.saveSessionSettings(settings);
         emailService.sendEmail(userDetails.getUsername(), "Session Abandoned: " + settings);
         System.out.println("\nLeasing process abandoned.");
+
+        Thread.sleep(1000);
+        emailService.viewEmails(userDetails.getUsername());
+        continueLeasingProcess();
+
     }
 
     public void continueLeasingProcess() {
-        Database.SessionSettings settings = database.retrieveSessionSettings();
+        SessionSettings settings = sessionSettings.retrieveSessionSettings();
         if (settings != null) {
             System.out.println("\nContinuing your previous session...");
             userDetails.setSelectedVehicleId(settings.getSelectedVehicleId());
@@ -204,25 +221,9 @@ public class VehicleLeasing {
         }
     }
 
-    public void viewLeasingSubscriptions() {
-        List<Vehicle.VehicleDetails> leasedVehicles = vehicle.getLeasedVehicles();
-        if (leasedVehicles.isEmpty()) {
-            System.out.println("\nYou have no active leasing subscriptions.");
-        } else {
-            System.out.println("\nYour Leasing Subscriptions:\n");
-            for (Vehicle.VehicleDetails details : leasedVehicles) {
-                System.out.println("ID: " + details.getVehicleId() + ", Type: " + details.getType() + ", Make: " + details.getMake()
-                        + ", Model: " + details.getModel() + ", Year: " + details.getYear() + ", Price: " + details.getPrice() + ", Status: " + details.getStatus());
-            }
-        }
-        List<LeaseContract.LeasingSubscriptions> pendingLeases = leaseContract.getUserLeasesByStatus(userDetails.getUsername(), "Pending");
-        if (pendingLeases.isEmpty()) {
-            System.out.println("\nYou have no pending vehicle pickups.");
-        } else {
-            System.out.println("\nYour Pending Vehicle Pickups:\n");
-            for (LeaseContract.LeasingSubscriptions lease : pendingLeases) {
-                System.out.println("Lease ID: " + lease.getLeaseID() + ", Vehicle ID: " + lease.getVehicleID() + ", Status: " + lease.getStatus());
-            }
-        }
+    public void setUserDetails(User.UserDetails userDetails) {
+        this.userDetails = userDetails;
     }
+
+
 }

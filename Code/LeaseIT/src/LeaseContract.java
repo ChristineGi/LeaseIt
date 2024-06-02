@@ -5,47 +5,37 @@ import java.util.UUID;
 public class LeaseContract {
 
     private List<LeasingSubscriptions> leases;
+    private double monthlyPayment;
+    private int leaseTerm;
+    private int mileageLimit;
 
     public LeaseContract() {
         leases = new ArrayList<>();
+        this.monthlyPayment = 300.0;
+        this.leaseTerm = 36; // 36 months
+        this.mileageLimit = 12000; // 12000 miles per year
     }
 
-    public LeasingTerms calculateLeasingTerms(Vehicle.VehicleDetails vehicleDetails) {
-        LeasingTerms terms = new LeasingTerms();
-        terms.setMonthlyPayment(vehicleDetails.getPrice() / 36.0);
-        terms.setLeaseTerm(36);
-        terms.setMileageLimit(12000);
-        return terms;
+    public void calculateLeasingTerms(Vehicle vehicleDetails) {
+        this.monthlyPayment = vehicleDetails.getPrice() / 36.0;
+        this.leaseTerm = 36;
+        this.mileageLimit = 12000;
     }
 
-    public void finalizeLeaseContract() {
-        System.out.println("Lease contract finalized.");
-    }
-
-    public LeasingTerms requestLeasingTerms(LeasingTerms terms) {
-        return terms;
+    public void requestLeasingTerms() {
+        System.out.println("\n----------  Leasing Terms ----------");
+        System.out.printf("Monthly Payment: %.2f $", this.monthlyPayment);
+        System.out.println("\nLease Term: " + this.leaseTerm + " months");
+        System.out.println("Mileage Limit: " + this.mileageLimit + " miles");
+        System.out.println("------------------------------------");
     }
 
     public void addLease(String vehicleID, String userID) {
         String leaseID = UUID.randomUUID().toString();
         LeasingSubscriptions lease = new LeasingSubscriptions(leaseID, vehicleID, userID, "Pending", false);
         leases.add(lease);
-        System.out.println("\nLease ID : " + leaseID);
     }
 
-    public List<LeasingSubscriptions> getLeases() {
-        return leases;
-    }
-
-    public List<LeasingSubscriptions> getUserLeases(String userID) {
-        List<LeasingSubscriptions> userLeases = new ArrayList<>();
-        for (LeasingSubscriptions lease : leases) {
-            if (lease.getUserID().equals(userID)) {
-                userLeases.add(lease);
-            }
-        }
-        return userLeases;
-    }
 
     public List<LeasingSubscriptions> getUserLeasesByStatus(String userID, String status) {
         List<LeasingSubscriptions> userLeases = new ArrayList<>();
@@ -66,14 +56,16 @@ public class LeaseContract {
         return false;
     }
 
-    public Vehicle.VehicleDetails getVehicleInfo(String leaseID) {
+
+    public void getVehicleInfo(String leaseID) {
         for (LeasingSubscriptions lease : leases) {
             if (lease.getLeaseID().equals(leaseID)) {
-                return new Vehicle().fetchVehicleDetails(lease.getVehicleID());
+                new Vehicle().fetchVehicleDetails(lease.getVehicleID());
+                return;
             }
         }
-        return null;
     }
+
 
     public void setLocationConfigurationStatus(String leaseID, boolean status) {
         for (LeasingSubscriptions lease : leases) {
@@ -93,41 +85,10 @@ public class LeaseContract {
         return false;
     }
 
-    public static class LeasingTerms {
-        private double monthlyPayment;
-        private int leaseTerm;
-        private int mileageLimit;
-
-        public LeasingTerms() {
-            this.monthlyPayment = 300.0;
-            this.leaseTerm = 36; // 36 months
-            this.mileageLimit = 12000; // 12000 miles per year
-        }
-
-        public double getMonthlyPayment() {
-            return monthlyPayment;
-        }
-
-        public void setMonthlyPayment(double monthlyPayment) {
-            this.monthlyPayment = monthlyPayment;
-        }
-
-        public int getLeaseTerm() {
-            return leaseTerm;
-        }
-
-        public void setLeaseTerm(int leaseTerm) {
-            this.leaseTerm = leaseTerm;
-        }
-
-        public int getMileageLimit() {
-            return mileageLimit;
-        }
-
-        public void setMileageLimit(int mileageLimit) {
-            this.mileageLimit = mileageLimit;
-        }
+    public double getMonthlyPayment() {
+        return monthlyPayment;
     }
+
 
     public static class LeasingSubscriptions {
         private String leaseID;
@@ -144,32 +105,12 @@ public class LeaseContract {
             this.locationConfigured = locationConfigured;
         }
 
-        public String getLeaseID() {
-            return leaseID;
-        }
-
-        public String getVehicleID() {
-            return vehicleID;
-        }
-
-        public String getUserID() {
-            return userID;
-        }
-
-        public String getStatus() {
-            return status;
-        }
-
-        public void setStatus(String status) {
-            this.status = status;
-        }
-
-        public boolean isLocationConfigured() {
-            return locationConfigured;
-        }
-
-        public void setLocationConfigured(boolean locationConfigured) {
-            this.locationConfigured = locationConfigured;
-        }
+        public String getLeaseID() {return leaseID;}
+        public String getVehicleID() {return vehicleID;}
+        public String getUserID() {return userID;}
+        public String getStatus() {return status;}
+        public void setStatus(String status) {this.status = status;}
+        public boolean isLocationConfigured() {return locationConfigured;}
+        public void setLocationConfigured(boolean locationConfigured) {this.locationConfigured = locationConfigured;}
     }
 }

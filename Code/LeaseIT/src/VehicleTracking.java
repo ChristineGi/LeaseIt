@@ -13,65 +13,26 @@ public class VehicleTracking {
         this.leaseContract = leaseContract;
     }
 
-    public void requestLocationPermission() throws InterruptedException {
-        message.displayMessage("Grant Permission");
+    public void showAddLocationServices(){
+        System.out.println("\nLocation configuration is inactive. Adding location services...");
     }
 
-    public void connectToCloud() throws InterruptedException {
-        boolean connected = cloud.connect();
-        if (!connected) {
-            handleConnectionFailed();
-        }
-    }
+    public void showVehicleTracking(String userID, LocationConfiguration locationConfig) throws InterruptedException {
 
-    public void loadVehicleCoords() throws InterruptedException {
-        googleMaps.loadVehicleCoords();
-    }
-
-    public void displayData() throws InterruptedException {
-        googleMaps.displayData();
-    }
-
-    public void completeNavigation() throws InterruptedException {
-        googleMaps.completeNavigation();
-        message.displayMessage("You've reached your car");
-    }
-
-    public void startNavigation() throws InterruptedException {
-        googleMaps.startNavigation();
-    }
-
-
-    public void updateLocation() throws InterruptedException {
-        googleMaps.updateLocation();
-    }
-
-    public void handleConnectionFailed() throws InterruptedException {
-        cloud.showConnectionStatus("\nConnection Failed. Please try again.");
-        System.out.print("\nDo you want to retry tracking? (yes/no): ");
-        Scanner scanner = new Scanner(System.in);
-        String retry = scanner.nextLine();
-
-        if (retry.equalsIgnoreCase("yes")) {
-            System.out.println("\nAttempting reconnection...");
-            connectToCloud();
-        } else {
-            System.out.println("\nTracking aborted.");
-        }
-    }
-
-    public void handleVehicleTracking(String userID, LocationConfiguration locationConfig) throws InterruptedException {
         if (leaseContract.checkActiveLease(userID)) {
+
             System.out.println("\n------- Vehicle Tracking Screen -------");
+
             String leaseID = leaseContract.getUserLeasesByStatus(userID, "Active").get(0).getLeaseID();
 
             if (leaseContract.isLocationConfigured(leaseID)) {
                 System.out.println("\nLocation configuration is active.");
             } else {
-                System.out.println("\nLocation configuration is inactive. Adding location services...");
+
+                showAddLocationServices();
+                leaseContract.getVehicleInfo(leaseID);
                 locationConfig.setBoundaries();
                 locationConfig.adjustBoundaries();
-                locationConfig.completeRegistration();
                 leaseContract.setLocationConfigurationStatus(leaseID, true);
                 cloud.setLocationConfigured(true); // Update cloud status
                 connectToCloud();
@@ -88,8 +49,8 @@ public class VehicleTracking {
 
             if (grantPermission.equalsIgnoreCase("yes")) {
                 connectToCloud();
-                loadVehicleCoords();
-                googleMaps.getBoundarySettings();
+                googleMaps.loadVehicleCoords();
+                locationConfig.getBoundarySettings();
                 AI ai = new AI();
                 ai.analyzeRouteLogs();
                 ai.noUnusualActivityDetected();
@@ -99,9 +60,10 @@ public class VehicleTracking {
                 System.out.print("\nSelect Smart Navigation? (yes/no): ");
                 String selectNavigation = scanner.nextLine();
                 if (selectNavigation.equalsIgnoreCase("yes")) {
-                    startNavigation();
-                    updateLocation();
-                    completeNavigation();
+                    googleMaps.loadRouteToVehicle();
+                    googleMaps.startNavigation();
+                    googleMaps.updateLocation();
+                    googleMaps.completeNavigation();
                     System.out.println("\nVehicle tracking process completed successfully.");
                 }
             }
@@ -109,4 +71,41 @@ public class VehicleTracking {
             System.out.println("\nNo active lease found for user: " + userID);
         }
     }
+
+    public void requestLocationPermission() throws InterruptedException {
+        message.displayMessage("Grant Permission");
+    }
+
+    public void connectToCloud() throws InterruptedException {
+        boolean connected = cloud.connect();
+        if (!connected) {
+            handleConnectionFailed();
+        }
+    }
+
+    public static void completeRegistration() throws InterruptedException {
+        System.out.println("\nRegistration complete.");
+        Thread.sleep(1000);
+
+    }
+
+    public void displayData() throws InterruptedException {
+        googleMaps.displayData();
+    }
+
+
+    public void handleConnectionFailed() throws InterruptedException {
+        cloud.showConnectionStatus("\nConnection Failed. Please try again.");
+        System.out.print("\nDo you want to retry tracking? (yes/no): ");
+        Scanner scanner = new Scanner(System.in);
+        String retry = scanner.nextLine();
+
+        if (retry.equalsIgnoreCase("yes")) {
+            System.out.println("\nAttempting reconnection...");
+            connectToCloud();
+        } else {
+            System.out.println("\nTracking aborted.");
+        }
+    }
+
 }

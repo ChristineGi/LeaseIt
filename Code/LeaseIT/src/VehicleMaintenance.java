@@ -1,5 +1,4 @@
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 public class VehicleMaintenance {
@@ -10,10 +9,10 @@ public class VehicleMaintenance {
     private Email emailService;
     private Calendar calendar;
     UrgentService urgentService;
-    private Database.UserDetails userDetails;
+    private User.UserDetails userDetails;
     private LeaseContract leaseContract;
 
-    public VehicleMaintenance(Vehicle vehicle, AI ai, Cloud cloud, MaintenanceCenter maintenanceCenter, Email emailService, Calendar calendar, Database.UserDetails userDetails, LeaseContract leaseContract) {
+    public VehicleMaintenance(Vehicle vehicle, AI ai, Cloud cloud, MaintenanceCenter maintenanceCenter, Email emailService, Calendar calendar, User.UserDetails userDetails, LeaseContract leaseContract) {
         this.vehicle = vehicle;
         this.ai = ai;
         this.cloud = cloud;
@@ -30,10 +29,33 @@ public class VehicleMaintenance {
         return !activeLeases.isEmpty();
     }
 
+    public void showVehicleMaintenace () throws InterruptedException {
+
+        Scanner scanner = new Scanner(System.in);
+
+        if (hasActiveLease()) {
+
+            System.out.println("1. Maintenance Check");
+            System.out.println("2. Urgent Maintenance");
+            System.out.print("Select an option: ");
+            int maintenanceChoice = scanner.nextInt();
+
+            if (maintenanceChoice == 1) {
+                performMaintenanceCheck();
+
+            } else if (maintenanceChoice == 2) {
+                urgentService.displayIssueDescription();
+                urgentService.submitIssueDescription();
+            }
+        } else {
+            System.out.println("No active leases found. Cannot perform vehicle maintenance.");
+        }
+    }
     public void performMaintenanceCheck() throws InterruptedException {
+
         List<LeaseContract.LeasingSubscriptions> activeLeases = leaseContract.getUserLeasesByStatus(userDetails.getUsername(), "Active");
         LeaseContract.LeasingSubscriptions activeLease = activeLeases.get(0); // Assuming the user has one active lease
-        Vehicle.VehicleDetails vehicleDetails = vehicle.fetchVehicleDetails(activeLease.getVehicleID());
+        Vehicle vehicleDetails = vehicle.fetchVehicleDetails(activeLease.getVehicleID());
 
         if (vehicleDetails == null) {
             System.out.println("Vehicle details not found.");
@@ -125,6 +147,7 @@ public class VehicleMaintenance {
     }
 
     public class UrgentService {
+
         public void displayIssueDescription() {
             System.out.print("\nPlease describe the issue you are experiencing with your vehicle: ");
         }

@@ -1,9 +1,9 @@
 public class QR {
 
     private Email emailService;
-    private Database.UserDetails userDetails;
+    private User.UserDetails userDetails;
 
-    public QR(Email emailService, Database.UserDetails userDetails) {
+    public QR(Email emailService, User.UserDetails userDetails) {
         this.emailService = emailService;
         this.userDetails = userDetails;
     }

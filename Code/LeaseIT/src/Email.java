@@ -2,6 +2,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Email {
 
@@ -20,13 +21,25 @@ public class Email {
         return userEmails.getOrDefault(username, new ArrayList<>());
     }
 
-    public void deleteEmail(String username, int emailIndex) {
-        List<String> emails = userEmails.get(username);
-        if (emails != null && emailIndex >= 0 && emailIndex < emails.size()) {
-            emails.remove(emailIndex);
-            System.out.println("Email at index " + emailIndex + " deleted for user " + username);
+
+    public void viewEmails(String username) {
+        Scanner scanner = new Scanner(System.in);
+        List<String> emails = getEmails(username);
+        if (emails.isEmpty()) {
+            System.out.println("\nYou've got no emails !");
         } else {
-            System.out.println("Invalid email index.");
+            System.out.println("\n**** Emails ****\n");
+            for (int i = 0; i < emails.size(); i++) {
+                System.out.println((i + 1) + ". " + emails.get(i));
+            }
+            System.out.print("\nEnter the email number to interact , or '0' to go back: ");
+            String emailChoice = scanner.next();
+            if (emailChoice.equals("0")) {
+                return;
+            } else {
+                int emailIndex = Integer.parseInt(emailChoice) - 1;
+                System.out.println("\nEmail: " + emails.get(emailIndex));
+            }
         }
     }
 }
